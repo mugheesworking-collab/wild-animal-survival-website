@@ -12,18 +12,18 @@ window.GAME = {
   worlds: [
     {name:'Jungle', title:'INTO THE GREEN.', text:'Dense foliage. Rocky trails. A wilderness alive with possibility.', image:3},
     {name:'Savanna', title:'WIDE OPEN. UNTAMED.', text:'Open grasslands stretch toward the horizon. Follow the hunt.', image:5},
-    {name:'Waterways', title:'AT THE WATER’S EDGE.', text:'Rivers and lakes bring the wilderness together. Stay alert.', image:1}
+    {name:'Waterways', title:'AT THE WATER\'S EDGE.', text:'Rivers and lakes bring the wilderness together. Stay alert.', image:1}
   ],
   animals: [
-    {name:'Wolf', text:'Follow your instincts into the wild.', image:2},
-    {name:'Tiger', text:'Meet the wilderness with tooth and claw.', image:4},
-    {name:'Black Panther', text:'Discover a different side of the wild.', image:3},
-    {name:'Bear', text:'Stand your ground in the wilderness.', image:8},
-    {name:'Lion', text:'Answer the call of the savanna.', image:5},
-    {name:'Crocodile', text:'See the wild from the water’s edge.', image:1}
+    {name:'Wolf',         text:'Follow your instincts into the wild.',      image:2, charImage:'assets/char-wolf.webp'},
+    {name:'Tiger',        text:'Meet the wilderness with tooth and claw.',   image:4, charImage:'assets/char-tiger.webp'},
+    {name:'Black Panther',text:'Discover a different side of the wild.',     image:3, charImage:'assets/char-panther.webp'},
+    {name:'Bear',         text:'Stand your ground in the wilderness.',       image:8, charImage:'assets/char-bear.webp'},
+    {name:'Lion',         text:'Answer the call of the savanna.',            image:5, charImage:'assets/char-lion.webp'},
+    {name:'Crocodile',    text:'See the wild from the water\'s edge.',       image:1, charImage:'assets/char-crocodile.webp'}
   ],
   media: [
-    {image:3, title:'Tiger at the water’s edge'}, {image:5,title:'Lion in the grasslands'},
+    {image:3, title:'Tiger at the water\'s edge'}, {image:5,title:'Lion in the grasslands'},
     {image:1,title:'Crocodile in the river'}, {image:4,title:'The hunt begins'},
     {image:7,title:'A different perspective'}, {image:8,title:'Wildlife encounters'},
     {image:2,title:'Animal selection'}, {image:6,title:'More from the wilderness'}

@@ -82,7 +82,13 @@ function selectCharacter(index) {
   if (mainCharImage) {
     mainCharImage.style.opacity = '0.7';
     setTimeout(() => {
-      mainCharImage.src = `assets/game-${animal.image}.webp`;
+      // Use dedicated character environment image if available, fallback to game screenshot
+      const src = animal.charImage || `assets/game-${animal.image}.webp`;
+      mainCharImage.onerror = () => {
+        mainCharImage.onerror = null;
+        mainCharImage.src = `assets/game-${animal.image}.webp`;
+      };
+      mainCharImage.src = src;
       mainCharImage.alt = `${animal.name} — Wild Animal Survival Sim 3D`;
       mainCharImage.style.opacity = '1';
     }, 120);
