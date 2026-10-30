@@ -338,54 +338,63 @@ body { padding-top: 0; }
   width: 100%;
 }
 
-/* Header Right */
+/* Header Right - Exact Call of Duty Mobile Dual CTA matching reference */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
 }
-.header-secondary {
+.header-play-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--tech);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #C0C0C8;
-  padding: 6px 10px;
-  transition: color 0.2s;
-}
-.header-secondary:hover {
-  color: #ffffff;
-}
-.header-secondary svg {
-  color: #A0A0A8;
-}
-.header-secondary:hover svg {
-  color: var(--gold);
-}
-
-/* Call of Duty Yellow Store CTA Button */
-.header-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   height: 38px;
-  min-height: 38px;
-  padding: 0 22px;
-  background: var(--gold);
-  color: #000000;
+  padding: 0 16px;
   font-family: var(--tech);
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 2px;
-  clip-path: none;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.header-play-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.header-play-link span:first-child {
+  font-size: 11px;
+  color: var(--gold);
+}
+/* Yellow Suggestion CTA Button */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 20px;
+  background: var(--gold);
+  color: #000000;
+  font-family: var(--tech);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
   box-shadow: 0 2px 14px var(--gold-glow);
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
 }
 .header-cta:hover {
   background: #ffffff;
@@ -1860,7 +1869,9 @@ dialog::backdrop {
   .brand-studio { font-size: 19px; }
   .brand-title { font-size: 17px; }
   .brand-title small { display: none; }
-  .header-cta { font-size: 12px; padding: 0 14px; height: 32px; min-height: 32px; }
+  .header-right { gap: 6px; }
+  .header-play-link { font-size: 11px; padding: 0 10px; height: 32px; }
+  .header-cta { font-size: 11px; padding: 0 12px; height: 32px; min-height: 32px; }
   .header nav.open { display: flex; }
   .header nav a { font-size: 18px; }
 

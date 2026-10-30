@@ -235,7 +235,7 @@ function openSuggestionModal(e) {
   }
 }
 
-document.querySelectorAll('.hero-suggestion-btn, a[href="suggestions.html"]').forEach(el => {
+document.querySelectorAll('.hero-suggestion-btn, #header-sugg-btn, a[href="suggestions.html"]').forEach(el => {
   el.addEventListener('click', openSuggestionModal);
 });
 
