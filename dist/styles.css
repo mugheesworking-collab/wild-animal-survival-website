@@ -489,8 +489,80 @@ body { padding-top: 0; }
 
 .hero-ctas {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+}
+.hero-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-suggestion-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 58px;
+  padding: 0 26px;
+  background: rgba(14, 14, 18, 0.88);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  border: 1.5px solid var(--gold);
+  border-radius: 8px;
+  font-family: var(--tech);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.8), 0 0 16px rgba(242, 180, 0, 0.25);
+  transition: all 0.22s ease;
+  box-sizing: border-box;
+}
+.hero-suggestion-btn:hover {
+  background: var(--gold);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 24px var(--gold-glow);
+}
+.hero-suggestion-btn .btn-icon {
+  font-size: 18px;
+}
+.hero-sublinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.hero-sublink {
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #C0C0C8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.hero-sublink:hover {
+  color: var(--gold);
+}
+.hero-sublink .gold-star {
+  color: var(--gold);
+  font-size: 14px;
+}
+.sublink-dot {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 16px;
 }
 
 /* Exact Call of Duty Mobile Google Play Store Badge */

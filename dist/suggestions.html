@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Give Suggestions | Wild Animal Survival Sim 3D | Gameyard</title>
+ <meta name="description" content="Submit your suggestions, feature requests, and ideas for Wild Animal Survival Sim 3D directly to the Gameyard development team.">
+ <meta name="theme-color" content="#000000">
+ <link rel="stylesheet" href="styles.css?v=3">
+ <style>
+  .suggest-page {
+    background: #08080c;
+    min-height: 100vh;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  .suggest-hero {
+    position: relative;
+    padding: 130px 24px 60px;
+    background: 
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.12) 0%, transparent 70%),
+      linear-gradient(180deg, #050508 0%, #0d0d12 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+  }
+  .suggest-hero-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .suggest-eyebrow {
+    font-family: var(--tech);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .suggest-title {
+    font-family: var(--heading);
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin: 0 0 18px;
+    color: #ffffff;
+  }
+  .suggest-title span {
+    color: var(--gold);
+    text-shadow: 0 0 24px var(--gold-glow);
+  }
+  .suggest-desc {
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: #C0C0C8;
+    margin: 0 auto;
+    max-width: 680px;
+  }
+  .suggest-main {
+    flex: 1;
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 24px 80px;
+    box-sizing: border-box;
+  }
+  .suggest-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+  .suggest-card {
+    background: linear-gradient(150deg, rgba(20, 20, 26, 0.95) 0%, rgba(12, 12, 16, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 38px 36px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group label {
+    display: block;
+    font-family: var(--tech);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #D6D6DC;
+    margin-bottom: 8px;
+  }
+  .form-group label .required {
+    color: var(--gold);
+  }
+  .form-control {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    padding: 13px 16px;
+    color: #ffffff;
+    font-family: var(--body);
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+  .form-control:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(242, 180, 0, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+  }
+  textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .category-chip-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #D6D6DC;
+    font-family: var(--tech);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .category-chip-btn:hover, .category-chip-btn.active {
+    background: rgba(242, 180, 0, 0.2);
+    border-color: var(--gold);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(242, 180, 0, 0.2);
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 15px;
+    letter-spacing: 0.16em;
+    cursor: pointer;
+  }
+  .success-banner {
+    display: none;
+    background: rgba(156, 231, 128, 0.12);
+    border: 1px solid #9CE780;
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    color: #9CE780;
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .side-card {
+    background: linear-gradient(150deg, rgba(20, 20, 26, 0.95) 0%, rgba(12, 12, 16, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 34px 30px;
+    margin-bottom: 24px;
+    border-top: 3px solid var(--gold);
+  }
+  .side-card h3 {
+    font-family: var(--heading);
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 12px;
+  }
+  .side-card p {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #C0C0C8;
+    margin: 0 0 20px;
+  }
+  .recent-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .recent-item {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+  .recent-topic {
+    font-family: var(--tech);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .recent-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 4px 0 2px;
+  }
+  .recent-date {
+    font-size: 11px;
+    color: #7A7A85;
+  }
+  @media (max-width: 860px) {
+    .suggest-layout {
+      grid-template-columns: 1fr;
+    }
+    .suggest-hero {
+      padding: 110px 16px 40px;
+    }
+    .suggest-card {
+      padding: 26px 20px;
+    }
+  }
+ </style>
+</head>
+<body class="suggest-page">
+ <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+  <div class="header-left">
+   <a class="brand" href="index.html#home" aria-label="Back to home">
+    <span class="brand-studio">GAMEYARD</span>
+    <span class="brand-divider">|</span>
+    <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
+   </a>
+  </div>
+  <nav id="navigation" aria-label="Main navigation">
+   <a href="index.html#modes">THE GAME</a>
+   <a href="index.html#worlds">WORLDS</a>
+   <a href="index.html#animals">ROSTER</a>
+   <a href="index.html#community">COMMUNITY</a>
+   <a href="suggestions.html" style="color:var(--gold);">GIVE SUGGESTIONS</a>
+  </nav>
+  <div class="header-right">
+   <a class="button header-cta" data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer">PLAY NOW</a>
+  </div>
+ </header>
+
+ <div class="suggest-hero">
+  <div class="suggest-hero-inner">
+   <p class="suggest-eyebrow">PLAYER INTEL & FEEDBACK</p>
+   <h1 class="suggest-title">SHAPE THE <span>FUTURE</span> OF THE WILD</h1>
+   <p class="suggest-desc">
+    Got an idea for a new beast, new maps, survival mechanics, or game modes? Tell the Gameyard studio team directly. Your feedback shapes our upcoming Google Play releases!
+   </p>
+  </div>
+ </div>
+
+ <main class="suggest-main">
+  <div class="suggest-layout">
+   <!-- Suggestion Form Card -->
+   <section class="suggest-card" aria-labelledby="form-heading">
+    <h2 id="form-heading" style="font-family:var(--heading); font-size:28px; text-transform:uppercase; margin:0 0 20px; color:#ffffff;">
+     SUBMIT YOUR SUGGESTION
+    </h2>
+
+    <div class="success-banner" id="success-banner" role="alert">
+     <strong>✔ Suggestion Received!</strong> Thank you for your feedback. We have prepared an email draft to the Gameyard team with your idea. You can also send it directly via email!
+    </div>
+
+    <form id="suggestion-full-form">
+     <!-- Category -->
+     <div class="form-group">
+      <label>1. Select Category <span class="required">*</span></label>
+      <div class="category-chips" id="category-chips">
+       <button type="button" class="category-chip-btn active" data-category="New Animals">🐾 New Animals</button>
+       <button type="button" class="category-chip-btn" data-category="New Biomes & Maps">🌲 New Biomes & Maps</button>
+       <button type="button" class="category-chip-btn" data-category="Gameplay Mechanics">⚡ Survival Mechanics</button>
+       <button type="button" class="category-chip-btn" data-category="Customization & Skins">🎨 Skins & Customization</button>
+       <button type="button" class="category-chip-btn" data-category="Bug Report">🐞 Bug / Performance</button>
+       <button type="button" class="category-chip-btn" data-category="Other Idea">💡 Other Idea</button>
+      </div>
+      <input type="hidden" id="selected-category" value="New Animals">
+     </div>
+
+     <!-- Idea Title -->
+     <div class="form-group">
+      <label for="input-title">2. Suggestion Summary / Title <span class="required">*</span></label>
+      <input type="text" id="input-title" class="form-control" placeholder="e.g. Add a Snow Leopard with mountain leap attack" required>
+     </div>
+
+     <!-- Details -->
+     <div class="form-group">
+      <label for="input-details">3. Details & Explanation <span class="required">*</span></label>
+      <textarea id="input-details" class="form-control" placeholder="Describe how it should work, what make it exciting, and how it improves the survival gameplay..." required></textarea>
+     </div>
+
+     <!-- Player Info -->
+     <div class="form-group" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div>
+       <label for="input-name">Your Name / Hunter Tag</label>
+       <input type="text" id="input-name" class="form-control" placeholder="e.g. WolfHunter99">
+      </div>
+      <div>
+       <label for="input-email">Your Email (for dev reply)</label>
+       <input type="email" id="input-email" class="form-control" placeholder="name@example.com">
+      </div>
+     </div>
+
+     <button type="submit" class="button submit-btn">
+      <span>SUBMIT SUGGESTION TO DEVS</span>
+      <span>🚀</span>
+     </button>
+    </form>
+   </section>
+
+   <!-- Side Info: Google Play Review Card & Your Suggestions -->
+   <aside>
+    <!-- Card 1: Review on Google Play -->
+    <div class="side-card">
+     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <span style="font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.18em; color:var(--gold); text-transform:uppercase;">OFFICIAL STORE</span>
+      <span style="color:var(--gold); font-size:18px;">★★★★★</span>
+     </div>
+     <h3>RATE ON GOOGLE PLAY</h3>
+     <p>
+      Love the hunt? Drop a 5-star rating on Google Play! Your public reviews are the #1 way to support the development of Wild Animal Survival Sim 3D.
+     </p>
+     <a class="button" data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" style="width:100%; justify-content:center; padding:14px 20px;">
+      <span>WRITE A REVIEW ON GOOGLE PLAY</span>
+      <span>↗</span>
+     </a>
+    </div>
+
+    <!-- Card 2: Your Submissions -->
+    <div class="side-card" id="recent-box" style="display:none;">
+     <h3>YOUR RECENT SUGGESTIONS</h3>
+     <div class="recent-list" id="recent-list"></div>
+    </div>
+
+    <!-- Back to Home -->
+    <div style="text-align:center; margin-top:20px;">
+     <a href="index.html#home" class="text-link" style="color:#D6D6DC; font-family:var(--tech); font-weight:700; letter-spacing:0.1em; text-transform:uppercase;">
+      ← Return to Main Website
+     </a>
+    </div>
+   </aside>
+  </div>
+ </main>
+
+ <footer class="section footer" style="border-top:1px solid rgba(255,255,255,0.08);">
+  <div class="footer-top">
+   <a href="index.html#home" class="studio">GAME<span>YARD</span><small>FOLLOW YOUR INSTINCTS.</small></a>
+   <nav aria-label="Footer navigation">
+    <a href="index.html#modes">The game</a>
+    <a href="index.html#animals">Animals</a>
+    <a href="index.html#community">Community</a>
+    <a href="suggestions.html" style="color:var(--gold);">Give suggestions</a>
+    <a data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer">Google Play ↗</a>
+   </nav>
+  </div>
+  <div class="footer-bottom">
+   <p>© 2026 Gameyard. Wild Animal Survival Sim 3D.<br>Google Play is a trademark of Google LLC.</p>
+   <p>Game studio: Gameyard<br>Google Play publisher: Hush Games</p>
+   <a href="index.html#home">BACK TO HOME ↑</a>
+  </div>
+ </footer>
+
+ <script>
+  // Category Chips
+  const chips = document.querySelectorAll('.category-chip-btn');
+  const catInput = document.getElementById('selected-category');
+  chips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      catInput.value = btn.getAttribute('data-category');
+    });
+  });
+
+  // Load Saved Suggestions
+  function loadRecent() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('user_suggestions') || '[]');
+      const box = document.getElementById('recent-box');
+      const list = document.getElementById('recent-list');
+      if (saved.length && box && list) {
+        box.style.display = 'block';
+        list.innerHTML = saved.slice(0, 4).map(s => `
+          <div class="recent-item">
+            <span class="recent-topic">${s.category}</span>
+            <div class="recent-title">${s.title}</div>
+            <div class="recent-date">${s.date}</div>
+          </div>
+        `).join('');
+      }
+    } catch(e){}
+  }
+  loadRecent();
+
+  // Form Submission
+  const form = document.getElementById('suggestion-full-form');
+  const banner = document.getElementById('success-banner');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cat = catInput.value;
+      const title = document.getElementById('input-title').value.trim();
+      const details = document.getElementById('input-details').value.trim();
+      const name = document.getElementById('input-name').value.trim() || 'Anonymous Hunter';
+      const email = document.getElementById('input-email').value.trim();
+
+      // Save locally
+      try {
+        const saved = JSON.parse(localStorage.getItem('user_suggestions') || '[]');
+        saved.unshift({
+          category: cat,
+          title: title,
+          details: details,
+          name: name,
+          email: email,
+          date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        });
+        localStorage.setItem('user_suggestions', JSON.stringify(saved));
+        loadRecent();
+      } catch(err){}
+
+      // Show success
+      banner.style.display = 'block';
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Create Mailto Link
+      const subject = encodeURIComponent(`Wild Animal Survival 3D - Suggestion [${cat}]: ${title}`);
+      const body = encodeURIComponent(
+        `Hi Gameyard Development Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Category: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThank you!`
+      );
+      const mailtoUrl = `mailto:hushgamesmarketing@gmail.com?subject=${subject}&body=${body}`;
+
+      // Open mail client
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 600);
+
+      form.reset();
+      chips[0].click();
+    });
+  }
+ </script>
+</body>
+</html>
