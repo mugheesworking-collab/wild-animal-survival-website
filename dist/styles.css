@@ -1,0 +1,1621 @@
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/font-0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/font-1.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/font-2.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/font-3.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/font-4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/font-5.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/font-6.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(assets/font-7.ttf) format('truetype');
+}
+
+/* Call of Duty Mobile Tiered Black & Golden Yellow Palette */
+:root {
+  --bg: #000000;
+  --bg-deep: #050507;
+  --alt: #0a0a0d;
+  --surface: #101015;
+  --card: #15151c;
+  --card-elevated: #1b1b24;
+  --card-hover: #22222d;
+  --gold: #F2B400;
+  --gold-glow: rgba(242, 180, 0, 0.28);
+  --text: #D6D6DC;
+  --text-muted: #8E8E98;
+  --line: #202028;
+  --line-strong: #30303c;
+  --white: #ffffff;
+  --display: 'Teko', 'Barlow Condensed', Impact, sans-serif;
+  --tech: 'Rajdhani', 'Barlow Condensed', sans-serif;
+  --body: 'Rajdhani', 'Barlow', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 var(--body); }
+body.locked { overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; color: inherit; }
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 {
+  color: #ffffff;
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 0.92;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+h2 { font-size: clamp(48px, 6vw, 84px); letter-spacing: 0.02em; }
+h3 { font-size: clamp(34px, 4vw, 54px); }
+p { max-width: 65ch; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '//';
+  opacity: 0.85;
+  letter-spacing: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 52px;
+  padding: 13px 28px;
+  background: var(--gold);
+  color: #000000;
+  font-family: var(--tech);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 0;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px var(--gold-glow);
+}
+.button:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.35);
+}
+.button.outline {
+  background: rgba(17, 17, 22, 0.85);
+  color: #ffffff;
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+.button.outline:hover {
+  background: var(--gold);
+  color: #000000;
+  border-color: var(--gold);
+  box-shadow: 0 6px 22px var(--gold-glow);
+}
+
+.text-link {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  color: #ffffff;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  transition: color 0.2s;
+}
+.text-link:hover { color: var(--gold); }
+
+.section { padding: 96px max(6vw, 24px); }
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 44px;
+}
+.section-head>p {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-family: var(--body);
+}
+
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  z-index: 1000;
+  background: var(--gold);
+  color: #000000;
+  font-family: var(--tech);
+  font-weight: 700;
+  padding: 14px 20px;
+}
+.skip:focus { top: 12px; }
+
+/* Floating Smart Scroll Header matching Call of Duty Mobile reference */
+body { padding-top: 0; }
+.header {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1380px, calc(100% - 36px));
+  height: 56px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px;
+  background: rgba(10, 10, 14, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s, box-shadow 0.25s, border-color 0.25s;
+  will-change: transform;
+}
+.header.header-scrolled {
+  background: rgba(6, 6, 9, 0.98);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.95);
+}
+.header.header-hidden {
+  transform: translate(-50%, -150%);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 3-bar Hamburger Menu Button */
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  cursor: pointer;
+}
+.menu-button span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: #ffffff;
+  transition: transform 0.25s, opacity 0.25s, background-color 0.2s;
+}
+.menu-button:hover span {
+  background: var(--gold);
+}
+.menu-button[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-button[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.menu-button[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--display);
+}
+.brand-studio {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
+.brand-divider {
+  color: #4a4a54;
+  font-size: 18px;
+  font-weight: 300;
+}
+.brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.brand-title small {
+  font-family: var(--tech);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+/* Header Nav */
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.header nav a {
+  position: relative;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D6D6DC;
+  padding: 8px 2px;
+  transition: color 0.2s;
+}
+.header nav a:hover {
+  color: #ffffff;
+}
+.header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+.header nav a:hover::after {
+  width: 100%;
+}
+
+/* Header Right */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.header-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C0C0C8;
+  padding: 6px 10px;
+  transition: color 0.2s;
+}
+.header-secondary:hover {
+  color: #ffffff;
+}
+.header-secondary svg {
+  color: #A0A0A8;
+}
+.header-secondary:hover svg {
+  color: var(--gold);
+}
+
+/* Call of Duty Yellow Store CTA Button */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-height: 38px;
+  padding: 0 22px;
+  background: var(--gold);
+  color: #000000;
+  font-family: var(--tech);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  clip-path: none;
+  box-shadow: 0 2px 14px var(--gold-glow);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.header-cta:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35);
+}
+
+/* Call of Duty Mobile Hero Section */
+.hero {
+  height: 100svh;
+  min-height: 640px;
+  max-height: 920px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  animation: hero-enter 1.2s ease-out both;
+}
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 18%, transparent 72%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  width: min(880px, 92%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 55px; /* Brought down slightly for balanced composition */
+  z-index: 10;
+}
+
+/* Subtle black fade directly behind text, game name, callout, and Google Play button */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(380px, 88vw, 760px);
+  height: clamp(260px, 64vw, 410px);
+  background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.5) 46%, rgba(0, 0, 0, 0) 80%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Game Title scaled proportionally like Call of Duty Mobile Logo */
+.hero-game-title {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  line-height: 0.88;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
+  letter-spacing: 0.04em;
+}
+.hero-game-title .title-top {
+  display: block;
+  font-size: clamp(44px, 5.2vw, 68px);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+.hero-game-title .title-bottom {
+  display: block;
+  font-size: clamp(32px, 3.8vw, 48px);
+  color: #ffffff;
+  letter-spacing: 0.09em;
+  opacity: 0.96;
+}
+
+.hero-callout {
+  font-family: var(--display);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin: 14px 0 22px;
+  text-shadow: 0 0 20px var(--gold-glow), 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Exact Call of Duty Mobile Google Play Store Badge */
+.play-badge-official {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  height: 58px;
+  min-width: 218px;
+  padding: 0 24px 0 18px;
+  background: #000000;
+  border: 1.2px solid #8e8e93;
+  border-radius: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+}
+.play-badge-official:hover {
+  border-color: #ffffff;
+  background: #111116;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.95), 0 0 14px rgba(255, 255, 255, 0.2);
+}
+.play-badge-official .gp-icon {
+  width: 28px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.play-badge-official .gp-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.05;
+}
+.play-badge-official .gp-sub {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.play-badge-official .gp-title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* Pinned Bottom Strip in Hero (Call of Duty Promo Bar Style) */
+.hero-bottom-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  background: rgba(7, 7, 10, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  padding: 0 24px;
+}
+/* Yellow outline fading into dark shade on the left and right sides */
+.hero-bottom-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    rgba(242, 180, 0, 0) 0%,
+    rgba(242, 180, 0, 0.15) 6%,
+    rgba(242, 180, 0, 0.6) 16%,
+    var(--gold) 28%,
+    var(--gold) 72%,
+    rgba(242, 180, 0, 0.6) 84%,
+    rgba(242, 180, 0, 0.15) 94%,
+    rgba(242, 180, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+.strip-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.strip-ticker-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(90deg, transparent, #000 36px, #000 calc(100% - 36px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 36px, #000 calc(100% - 36px), transparent);
+}
+.strip-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  white-space: nowrap;
+  animation: ticker-scroll 24s linear infinite;
+  will-change: transform;
+  font-family: var(--tech);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #c4c4cc;
+}
+.strip-ticker-track i {
+  color: var(--gold);
+  font-style: normal;
+  font-size: 11px;
+  opacity: 0.9;
+}
+.strip-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 20px;
+  background: var(--gold);
+  color: #000000;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px var(--gold-glow);
+  transition: background 0.2s, transform 0.2s;
+}
+.strip-cta:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+/* Ticker / Tactical Marquee */
+.ticker {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #07070a;
+  padding: 15px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font: 700 16px var(--tech);
+  letter-spacing: 0.18em;
+  color: #A1A1AA;
+}
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  animation: ticker-scroll 24s linear infinite;
+  will-change: transform;
+}
+.ticker i {
+  color: var(--gold);
+  font-style: normal;
+  opacity: 0.9;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Latest Updates (Call of Duty Mobile Exact Second Section Spec) */
+.latest-updates {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--gold);
+  padding: 80px 0; /* Call of Duty Mobile exact: padding: 80px 0 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px; /* Call of Duty Mobile exact: gap: 21px */
+  text-align: center;
+}
+.updates-art-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.updates-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1.15);
+}
+.updates-shade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(242, 180, 0, 0.15) 0%, rgba(220, 160, 0, 0.55) 100%);
+}
+.trailer_heading {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.trailer_heading h2.updates-heading {
+  color: #000000 !important;
+  text-align: center;
+  text-shadow: none !important;
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 3.25rem; /* Call of Duty Mobile exact: 3.25rem (52px) */
+  line-height: 3.25rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+.updates-media-frame {
+  position: relative;
+  z-index: 2;
+  max-width: 866px; /* Call of Duty Mobile exact: 866px */
+  width: 90%;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(0, 0, 0, 0.3);
+  border: 2px solid #000000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.updates-media-frame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.55), 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.updates-media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Modes Section (Call of Duty Mobile Exact Spec) */
+.modes-section {
+  position: relative;
+  padding: 100px 60px;
+  background-color: #07070a;
+  background-image: url('assets/modes-bg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modes-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.modes-header h2 {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 3.25rem; /* 52px */
+  line-height: 3.25rem;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 24px var(--gold-glow);
+  margin: 0;
+}
+
+.modes-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+}
+.mode-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.mode-card-media {
+  flex: 0 0 54%;
+  max-width: 620px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65), 0 4px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.mode-card:hover .mode-card-media {
+  transform: translateY(-2px);
+  border-color: rgba(242, 180, 0, 0.35);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.75), 0 0 20px var(--gold-glow);
+}
+.mode-card-media img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.mode-card-content {
+  flex: 0 0 42%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mode-card-content h3 {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+.mode-card-content p {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: #D6D6DC;
+  margin: 0;
+  max-width: 52ch;
+}
+.image-label {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  font-family: var(--tech);
+  font-size: 9px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  letter-spacing: 0.16em;
+}
+
+/* Explore the Wild (Call of Duty Mobile Maps Style) */
+.maps-section {
+  position: relative;
+  background-color: #0b0b0e;
+  background-image:
+    linear-gradient(180deg, rgba(8, 8, 11, 0.78) 0%, rgba(8, 8, 11, 0.42) 25%, rgba(8, 8, 11, 0.42) 75%, rgba(8, 8, 11, 0.88) 100%),
+    url('assets/maps-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  padding: 100px 40px;
+  color: #ffffff;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.maps-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.maps-header h2 {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 3.25rem; /* 52px */
+  line-height: 3.25rem;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 24px var(--gold-glow);
+  margin: 0 0 16px;
+}
+.maps-subtitle {
+  font-family: var(--body);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5;
+  color: #D6D6DC;
+  margin: 0 auto;
+  max-width: 65ch;
+  text-align: center;
+}
+
+.maps-stage {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maps-main-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.maps-main-frame img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: opacity 0.22s ease;
+}
+
+.maps-caption-overlay {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: 8px 24px;
+  background: rgba(10, 10, 14, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(242, 180, 0, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75), 0 0 12px rgba(242, 180, 0, 0.15);
+  pointer-events: none;
+}
+.maps-caption-overlay p {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem; /* 22px */
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+  text-shadow: 0 0 12px var(--gold-glow), 0 2px 6px rgba(0, 0, 0, 0.9);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.maps-thumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  width: 100%;
+}
+.map-thumb-btn {
+  flex: 0 1 180px;
+  max-width: 180px;
+  width: 180px;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  background: #000000;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.65;
+  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.map-thumb-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  border-color: rgba(242, 180, 0, 0.45);
+}
+.map-thumb-btn.active {
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 16px var(--gold-glow);
+  transform: translateY(-2px);
+}
+.map-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Choose Your Wild Side (Call of Duty Mobile Iconic Characters Style) */
+.characters-section {
+  position: relative;
+  background-color: #0b0b0e;
+  background-image:
+    linear-gradient(180deg, rgba(8, 8, 11, 0.8) 0%, rgba(8, 8, 11, 0.45) 30%, rgba(8, 8, 11, 0.45) 70%, rgba(8, 8, 11, 0.9) 100%),
+    url('assets/modes-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  padding: 100px 40px;
+  color: #ffffff;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.characters-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.characters-header h2 {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 3.25rem; /* 52px */
+  line-height: 3.25rem;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 24px var(--gold-glow);
+  margin: 0 0 16px;
+}
+.characters-subtitle {
+  font-family: var(--body);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.5;
+  color: #D6D6DC;
+  margin: 0 auto;
+  max-width: 65ch;
+  text-align: center;
+}
+
+.characters-stage {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.characters-main-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.characters-main-frame img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: opacity 0.22s ease;
+}
+
+.characters-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 34px 28px 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 13, 0.94) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+.characters-caption-text h3 {
+  font-family: 'Anton', 'Hitmarker Condensed Black', Impact, 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem; /* 26px */
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 4px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+.characters-caption-text p {
+  font-family: var(--body);
+  font-size: 15px;
+  color: #D6D6DC;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+.characters-caption-badge {
+  font-family: var(--body);
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1;
+}
+
+.characters-thumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.characters-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+.character-thumb-btn {
+  flex: 0 1 144px;
+  max-width: 144px;
+  width: 144px;
+  aspect-ratio: 16 / 11;
+  padding: 0;
+  background: #000000;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  opacity: 0.65;
+  transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.character-thumb-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  border-color: rgba(242, 180, 0, 0.45);
+}
+.character-thumb-btn.active {
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75), 0 0 16px var(--gold-glow);
+  transform: translateY(-2px);
+}
+.character-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Media Gallery */
+.media {
+  background: #060608;
+  text-align: center;
+}
+.media .section-head { text-align: left; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.gallery-card {
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+.gallery-card:hover { border-color: var(--gold); }
+.gallery-card:first-child { grid-column: span 2; grid-row: span 2; }
+.gallery-card:last-child:not(:first-child) { grid-column: span 2; }
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-card:first-child img { aspect-ratio: auto; height: 100%; }
+.gallery-card:hover img { transform: scale(1.035); }
+.gallery-card .gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 20px 16px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.gallery-card .expand {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 16px;
+  transition: all 0.2s;
+}
+.gallery-card:hover .expand {
+  background: var(--gold);
+  color: #000000;
+}
+.gallery-card[hidden] { display: none; }
+
+/* News & Intel */
+.news { background: var(--alt); }
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  padding: 24px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+}
+.news-card .news-image {
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  margin-bottom: 22px;
+  border: 1px solid var(--line);
+}
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.news-card:hover img { transform: scale(1.04); }
+.news-card h3 {
+  font-size: 34px;
+  line-height: 1.05;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+.news-card p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 22px;
+}
+.news-card .text-link {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* Download CTA Section */
+.download {
+  position: relative;
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: #000000;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.download>img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.16;
+  filter: grayscale(30%);
+}
+.download::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,0,0,0.3) 0%, #000000 90%),
+    linear-gradient(90deg, #000000 0%, transparent 40%, transparent 60%, #000000 100%);
+}
+.download>div {
+  position: relative;
+  z-index: 1;
+  padding: 70px 24px;
+}
+.download h2 {
+  font-size: clamp(68px, 8.5vw, 120px);
+  line-height: 0.9;
+  margin-bottom: 28px;
+}
+.download h2 span {
+  color: var(--gold);
+  text-shadow: 0 0 28px var(--gold-glow);
+}
+.download>div>p:last-child {
+  font-family: var(--tech);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin: 18px auto 0;
+}
+
+/* Footer */
+.footer {
+  background: #000000;
+  padding-top: 70px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--line);
+}
+.footer-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 50px;
+}
+.studio {
+  color: #ffffff;
+  font: 700 44px/1 var(--display);
+  letter-spacing: 0.02em;
+}
+.studio>span { color: var(--gold); }
+.studio small {
+  display: block;
+  font: 700 10px var(--tech);
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+.footer nav {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 12px 40px;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer nav a:hover { color: var(--gold); }
+.age {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.age>b {
+  background: #ffffff;
+  color: #000000;
+  font: 700 32px var(--display);
+  padding: 8px 12px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+.age>span {
+  font-family: var(--tech);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.age small { display: block; font-size: 10px; color: var(--text-muted); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+  font-family: var(--tech);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.footer-bottom>a { white-space: nowrap; color: var(--gold); font-weight: 700; }
+
+/* Lightbox Modal */
+dialog {
+  width: min(1200px, 95vw);
+  padding: 18px 24px;
+  color: var(--text);
+  background: #09090d;
+  border: 1px solid var(--line-strong);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  max-height: 95svh;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.lightbox-top, .lightbox-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0 16px;
+  font-family: var(--tech);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.lightbox-bottom { padding: 16px 0 0; }
+.lightbox-top button, .lightbox-bottom button {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  transition: all 0.2s;
+}
+.lightbox-bottom button:hover, .lightbox-top button:hover {
+  color: #000000;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+#lightbox-image {
+  max-height: 72svh;
+  margin: auto;
+  object-fit: contain;
+  border: 1px solid var(--line);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes hero-enter {
+  from { transform: scale(1.04); opacity: 0.4; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Styles */
+@media(min-width: 1600px) {
+  .section {
+    padding-left: max(6vw, calc((100vw - 1400px)/2));
+    padding-right: max(6vw, calc((100vw - 1400px)/2));
+  }
+}
+
+@media(max-width: 1050px) {
+  .header { gap: 15px; }
+  .header nav { gap: 16px; }
+  .brand-studio { font-size: 21px; }
+  .brand-title { font-size: 19px; }
+  .hero-content { left: 50%; }
+  .hero h1 { font-size: 80px; }
+  .footer-top { flex-wrap: wrap; }
+  .footer nav { gap: 12px 25px; }
+  .news-card h3 { font-size: 30px; }
+}
+
+@media(max-width: 900px) {
+  .header-secondary { display: none; }
+  .header nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 14, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 20px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 2px solid var(--gold);
+    border-radius: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95);
+  }
+  .header nav.open { display: flex; }
+  .header nav a {
+    font-size: 18px;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media(max-width: 768px) {
+  html { scroll-padding-top: 64px; }
+  .header {
+    top: 10px;
+    width: calc(100% - 20px);
+    height: 52px;
+    padding: 0 14px;
+    gap: 10px;
+  }
+  .brand-studio { font-size: 19px; }
+  .brand-title { font-size: 17px; }
+  .brand-title small { display: none; }
+  .header-cta { font-size: 12px; padding: 0 14px; height: 32px; min-height: 32px; }
+  .header nav.open { display: flex; }
+  .header nav a { font-size: 18px; }
+
+  .hero { height: 100svh; min-height: 520px; max-height: 720px; }
+  .hero-art { height: 100%; position: absolute; top: 0; object-fit: cover; object-position: center 36%; }
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 20%, transparent 68%, rgba(0, 0, 0, 0.78) 100%);
+  }
+  .hero-content {
+    width: 92%;
+    margin-top: 35px;
+  }
+  .hero-game-title .title-top { font-size: clamp(36px, 9.5vw, 50px); }
+  .hero-game-title .title-bottom { font-size: clamp(26px, 7.2vw, 38px); }
+  .hero-callout { font-size: 22px; margin: 10px 0 18px; }
+  .hero-ctas { width: 100%; justify-content: center; }
+  .play-badge-official { height: 52px; min-width: 195px; padding: 0 20px 0 16px; }
+  .play-badge-official .gp-icon { width: 25px; height: 27px; }
+  .play-badge-official .gp-title { font-size: 17px; }
+  .hero-bottom-strip { height: 46px; padding: 0 12px; }
+  .strip-ticker-track { font-size: 12px; gap: 20px; }
+
+  .section { padding: 65px 24px; }
+  .latest-updates { padding: 40px 16px; gap: 16px; }
+  .trailer_heading h2.updates-heading { font-size: 2.25rem; line-height: 2.25rem; }
+  .section-head { display: block; margin-bottom: 28px; }
+  .section-head>p, .section-head>.text-link { margin-top: 18px; font-size: 14px; }
+  h2 { font-size: 52px; }
+
+  .tabs { gap: 10px; margin-bottom: 20px; }
+  .tabs button { min-width: 0; flex: 1; font-size: 20px; padding: 12px 14px; }
+  .tabs button span { font-size: 10px; }
+
+  .modes-section { padding: 40px 16px; }
+  .modes-header { margin-bottom: 30px; }
+  .modes-header h2 { font-size: 2.25rem; line-height: 2.25rem; }
+  .modes-cards-container { gap: 36px; }
+  .mode-card, .mode-card.reverse { flex-direction: column; gap: 20px; }
+  .mode-card-media, .mode-card-content { flex: 1 1 100%; max-width: 100%; width: 100%; }
+  .mode-card-media { aspect-ratio: 16 / 9; }
+  .mode-card-content h3 { font-size: 1.75rem; line-height: 1.75rem; }
+  .mode-card-content p { font-size: 15px; }
+
+  .maps-section { padding: 40px 16px; }
+  .maps-header { margin-bottom: 24px; }
+  .maps-header h2 { font-size: 2.25rem; line-height: 2.25rem; }
+  .maps-subtitle { font-size: 15px; }
+  .maps-thumbnails { gap: 10px; margin-top: 14px; }
+  .map-thumb-btn { flex: 1 1 0; max-width: calc(33.33% - 7px); width: auto; }
+  .maps-caption-overlay { top: 12px; padding: 5px 16px; }
+  .maps-caption-overlay p { font-size: 1.1rem; letter-spacing: 1px; }
+
+  .characters-section { padding: 40px 16px; }
+  .characters-header { margin-bottom: 24px; }
+  .characters-header h2 { font-size: 2.25rem; line-height: 2.25rem; }
+  .characters-subtitle { font-size: 15px; }
+  .characters-thumbnails { gap: 8px; margin-top: 14px; }
+  .character-thumb-btn { flex: 0 0 95px; max-width: 95px; width: 95px; }
+  .characters-caption-overlay { padding: 20px 16px 12px; }
+  .characters-caption-text h3 { font-size: 1.25rem; }
+  .characters-caption-text p { font-size: 13px; }
+
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery-card:first-child { grid-column: span 2; grid-row: span 1; }
+  .gallery-card:last-child:not(:first-child) { grid-column: span 2; }
+  .gallery-card:first-child img { height: auto; aspect-ratio: 16/9; }
+
+  .news-grid { grid-template-columns: 1fr; gap: 30px; }
+  .news-card h3 { font-size: 34px; }
+
+  .download { min-height: 450px; }
+  .download h2 { font-size: 80px; }
+
+  .footer-top { gap: 30px; }
+  .footer nav { width: 100%; order: 3; gap: 14px 20px; }
+  .studio { font-size: 38px; }
+  .footer-bottom { flex-wrap: wrap; font-size: 10px; gap: 18px; }
+  .footer-bottom>p { width: 100%; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *:before, *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Stable gallery height while images decode */
+.gallery { grid-auto-rows: clamp(150px, 15vw, 230px); }
+.gallery-card img { height: 100%; }
+@media(max-width: 768px) {
+  .gallery { grid-auto-rows: auto; }
+  .gallery-card img { height: auto; }
+}

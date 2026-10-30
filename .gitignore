@@ -1,0 +1,18 @@
+# Node
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.suo
+*.user
+
+# Logs
+*.log
+
+# Antigravity / brain files (internal tool files - not part of the website)
+brain/
+.gemini/

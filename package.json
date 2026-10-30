@@ -1,0 +1,11 @@
+{
+  "name": "wild-animal-survival-gameyard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wild Animal Survival Sim 3D website — Gameyard",
+  "scripts": {
+    "dev": "node scripts/preview.mjs",
+    "start": "node scripts/preview.mjs",
+    "check": "node --check dist/app.js && node --check dist/content.js && node --check scripts/preview.mjs"
+  }
+}
