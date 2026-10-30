@@ -216,4 +216,70 @@ if (suggestionForm) {
   });
 }
 
+// Suggestion Modal Handlers
+const suggModal = document.getElementById('suggestion-modal');
+const closeSuggModalBtn = document.getElementById('close-suggestion-modal');
+const modalChips = document.querySelectorAll('#modal-chips button');
+const modalCatInput = document.getElementById('modal-cat-input');
+const modalForm = document.getElementById('modal-suggestion-form');
+const modalStatus = document.getElementById('modal-form-status');
+
+function openSuggestionModal(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  if (suggModal && typeof suggModal.showModal === 'function') {
+    suggModal.showModal();
+    const titleInput = document.getElementById('modal-title-input');
+    if (titleInput) titleInput.focus();
+  } else {
+    window.location.href = 'suggestions.html';
+  }
+}
+
+document.querySelectorAll('.hero-suggestion-btn, a[href="suggestions.html"]').forEach(el => {
+  el.addEventListener('click', openSuggestionModal);
+});
+
+if (closeSuggModalBtn && suggModal) {
+  closeSuggModalBtn.addEventListener('click', () => suggModal.close());
+  suggModal.addEventListener('click', (e) => {
+    if (e.target === suggModal) suggModal.close();
+  });
+}
+
+if (modalChips.length && modalCatInput) {
+  modalChips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modalChips.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      modalCatInput.value = btn.getAttribute('data-cat') || 'General';
+    });
+  });
+}
+
+if (modalForm) {
+  modalForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cat = modalCatInput ? modalCatInput.value : 'General';
+    const title = (document.getElementById('modal-title-input') || {}).value || '';
+    const details = (document.getElementById('modal-details-input') || {}).value || '';
+    const name = (document.getElementById('modal-name-input') || {}).value || 'Player';
+    const email = (document.getElementById('modal-email-input') || {}).value || '';
+
+    if (modalStatus) {
+      modalStatus.textContent = '✔ Thank you! Preparing your email draft to Gameyard...';
+    }
+
+    const subject = encodeURIComponent(`Wild Animal Survival Sim 3D - Suggestion [${cat}]: ${title}`);
+    const body = encodeURIComponent(
+      `Hi Gameyard Development Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Topic: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThanks!`
+    );
+    const mailto = `mailto:hushgamesmarketing@gmail.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      window.location.href = mailto;
+      if (suggModal) suggModal.close();
+    }, 700);
+  });
+}
+
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.section-head,.mode-panel,.world-intro,.animal-list,.gallery,.news-grid,.latest-updates,.mode-card,.maps-header,.maps-stage,.characters-header,.characters-stage,.community-grid').forEach(node=>{node.classList.add('reveal');observer.observe(node);});}

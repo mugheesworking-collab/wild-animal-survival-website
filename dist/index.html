@@ -219,4 +219,70 @@
 </main>
 <footer class="section footer"><div class="footer-top"><a href="#home" class="studio" aria-label="Gameyard — back to top">GAME<span>YARD</span><small>FOLLOW YOUR INSTINCTS.</small></a><nav aria-label="Footer navigation"><a href="#modes">The game</a><a href="#animals">Animals</a><a href="#media">Media</a><a href="#community">Community</a><a data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer">Google Play ↗</a><a id="privacy-link" target="_blank" rel="noopener noreferrer">Game privacy policy ↗</a><a id="support-link">Game support ↗</a></nav><div class="age"><b>10+</b><span>EVERYONE 10+<small>Fantasy Violence</small></span></div></div><div class="footer-bottom"><p>© 2026 Gameyard. Wild Animal Survival Sim 3D.<br>Google Play is a trademark of Google LLC.</p><p>Game studio: Gameyard<br>Google Play publisher: Hush Games</p><a href="#home">BACK TO TOP ↑</a></div></footer>
 <dialog id="lightbox" aria-labelledby="lightbox-title"><div class="lightbox-top"><span id="lightbox-title"></span><button id="close-lightbox" aria-label="Close gallery">✕</button></div><img id="lightbox-image" alt=""><div class="lightbox-bottom"><button id="previous-image" aria-label="Previous image">←</button><span id="lightbox-count" aria-live="polite"></span><button id="next-image" aria-label="Next image">→</button></div></dialog>
+
+<dialog id="suggestion-modal" aria-labelledby="modal-sugg-title" style="max-width:620px; width:92vw; padding:30px 28px; background:linear-gradient(150deg, #16161e 0%, #0c0c10 100%); border:1px solid rgba(242, 180, 0, 0.4); border-radius:6px; box-shadow:0 25px 60px rgba(0,0,0,0.9), 0 0 30px rgba(242,180,0,0.15);">
+ <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;">
+  <div>
+   <p style="font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.18em; color:var(--gold); text-transform:uppercase; margin:0 0 6px;">PLAYER INTEL CHANNEL</p>
+   <h2 id="modal-sugg-title" style="font-family:var(--heading); font-size:28px; text-transform:uppercase; margin:0; color:#ffffff; line-height:1;">GIVE US SUGGESTIONS</h2>
+  </div>
+  <button id="close-suggestion-modal" aria-label="Close modal" style="background:none; border:none; color:#ffffff; font-size:24px; cursor:pointer; padding:4px 8px; line-height:1; opacity:0.8;">✕</button>
+ </div>
+ <p style="font-family:var(--body); font-size:14px; color:#C0C0C8; margin:0 0 18px; line-height:1.5;">
+  Got an idea for a new beast, new maps, survival mechanics, or features? Pitch it straight to the Gameyard developers.
+ </p>
+
+ <form id="modal-suggestion-form">
+  <div style="margin-bottom:16px;">
+   <label style="display:block; font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.12em; color:#D6D6DC; text-transform:uppercase; margin-bottom:8px;">
+    Select Topic <span style="color:var(--gold)">*</span>
+   </label>
+   <div style="display:flex; flex-wrap:wrap; gap:8px;" id="modal-chips">
+    <button type="button" class="topic-chip selected" data-cat="New Animals" style="padding:6px 12px; font-size:12px;">🐾 New Animals</button>
+    <button type="button" class="topic-chip" data-cat="New Biomes" style="padding:6px 12px; font-size:12px;">🌲 New Biomes</button>
+    <button type="button" class="topic-chip" data-cat="Survival Mechanics" style="padding:6px 12px; font-size:12px;">⚡ Gameplay</button>
+    <button type="button" class="topic-chip" data-cat="Feature Request" style="padding:6px 12px; font-size:12px;">💡 Features</button>
+   </div>
+   <input type="hidden" id="modal-cat-input" value="New Animals">
+  </div>
+
+  <div style="margin-bottom:14px;">
+   <label for="modal-title-input" style="display:block; font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.12em; color:#D6D6DC; text-transform:uppercase; margin-bottom:6px;">
+    Idea Summary <span style="color:var(--gold)">*</span>
+   </label>
+   <input type="text" id="modal-title-input" class="form-control" placeholder="e.g. Add Snow Leopard with stealth jump" required style="width:100%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:11px 14px; color:#fff; font-size:14px; box-sizing:border-box;">
+  </div>
+
+  <div style="margin-bottom:14px;">
+   <label for="modal-details-input" style="display:block; font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.12em; color:#D6D6DC; text-transform:uppercase; margin-bottom:6px;">
+    Details <span style="color:var(--gold)">*</span>
+   </label>
+   <textarea id="modal-details-input" class="form-control" placeholder="Describe how your idea works and what makes it fun..." rows="3" required style="width:100%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:11px 14px; color:#fff; font-size:14px; box-sizing:border-box; resize:vertical;"></textarea>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+   <div>
+    <label for="modal-name-input" style="display:block; font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.12em; color:#D6D6DC; text-transform:uppercase; margin-bottom:6px;">Your Name (optional)</label>
+    <input type="text" id="modal-name-input" placeholder="Hunter Tag" style="width:100%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:9px 12px; color:#fff; font-size:13px; box-sizing:border-box;">
+   </div>
+   <div>
+    <label for="modal-email-input" style="display:block; font-family:var(--tech); font-size:11px; font-weight:800; letter-spacing:0.12em; color:#D6D6DC; text-transform:uppercase; margin-bottom:6px;">Your Email (optional)</label>
+    <input type="email" id="modal-email-input" placeholder="name@example.com" style="width:100%; background:rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.2); border-radius:4px; padding:9px 12px; color:#fff; font-size:13px; box-sizing:border-box;">
+   </div>
+  </div>
+
+  <div style="display:flex; gap:12px; align-items:center;">
+   <button type="submit" class="button" style="flex:1; justify-content:center; padding:14px 20px; font-size:13px; letter-spacing:0.14em;">
+    <span>SEND MY SUGGESTION</span>
+    <span>🚀</span>
+   </button>
+  </div>
+  <p id="modal-form-status" style="font-family:var(--tech); font-size:12px; color:#9CE780; margin:10px 0 0; text-align:center; min-height:16px;"></p>
+ </form>
+ <div style="margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center;">
+  <a href="suggestions.html" style="font-family:var(--tech); font-size:12px; color:var(--gold); font-weight:700; letter-spacing:0.08em; text-decoration:none;">Open Full Page View ↗</a>
+  <a data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" style="font-family:var(--tech); font-size:12px; color:#D6D6DC; font-weight:700; letter-spacing:0.08em; text-decoration:none;">★ Rate on Google Play</a>
+ </div>
+</dialog>
+
 </body></html>
