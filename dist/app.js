@@ -159,4 +159,61 @@ window.addEventListener('scroll', () => {
   lastScrollY = Math.max(0, currentScrollY);
 }, { passive: true });
 
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.section-head,.mode-panel,.world-intro,.animal-list,.gallery,.news-grid,.latest-updates,.mode-card,.maps-header,.maps-stage,.characters-header,.characters-stage').forEach(node=>{node.classList.add('reveal');observer.observe(node);});}
+// Community Suggestions & Feedback Handlers
+const topicChips = document.querySelectorAll('.topic-chip');
+const suggestionMailBtn = document.getElementById('open-suggestion-btn');
+const toggleFormBtn = document.getElementById('toggle-inline-feedback');
+const suggestionForm = document.getElementById('suggestion-form');
+const suggestionText = document.getElementById('suggestion-text');
+const formMsg = document.getElementById('form-msg');
+let activeTopic = 'New Animals';
+
+function updateMailtoLink(customText = '') {
+  if (!suggestionMailBtn) return;
+  const supportEmail = (window.GAME && window.GAME.supportEmail) || 'hushgamesmarketing@gmail.com';
+  const subject = encodeURIComponent(`Wild Animal Survival Sim 3D - Suggestion [${activeTopic}]`);
+  const body = encodeURIComponent(
+    `Hi Gameyard Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Topic: ${activeTopic}\n- Idea:\n${customText || '(Write your suggestion here)'}\n\nThanks!`
+  );
+  suggestionMailBtn.href = `mailto:${supportEmail}?subject=${subject}&body=${body}`;
+}
+
+if (topicChips.length) {
+  topicChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      topicChips.forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      activeTopic = chip.getAttribute('data-topic') || 'Game Idea';
+      updateMailtoLink(suggestionText ? suggestionText.value : '');
+      if (suggestionText) {
+        suggestionText.placeholder = `Describe your idea for ${activeTopic}...`;
+        suggestionText.focus();
+      }
+    });
+  });
+}
+
+if (toggleFormBtn && suggestionForm) {
+  toggleFormBtn.addEventListener('click', () => {
+    const isHidden = suggestionForm.style.display === 'none';
+    suggestionForm.style.display = isHidden ? 'flex' : 'none';
+    toggleFormBtn.textContent = isHidden ? 'Hide form ↑' : 'Or write suggestion here ↓';
+    if (isHidden && suggestionText) suggestionText.focus();
+  });
+}
+
+if (suggestionForm) {
+  suggestionForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const idea = (suggestionText && suggestionText.value.trim()) || '';
+    if (!idea) return;
+    updateMailtoLink(idea);
+    if (formMsg) {
+      formMsg.textContent = 'Opening email draft with your idea... Thank you!';
+      formMsg.style.color = '#9CE780';
+    }
+    window.location.href = suggestionMailBtn.href;
+  });
+}
+
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});document.querySelectorAll('.section-head,.mode-panel,.world-intro,.animal-list,.gallery,.news-grid,.latest-updates,.mode-card,.maps-header,.maps-stage,.characters-header,.characters-stage,.community-grid').forEach(node=>{node.classList.add('reveal');observer.observe(node);});}

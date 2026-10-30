@@ -1283,6 +1283,271 @@ body { padding-top: 0; }
   color: var(--gold);
 }
 
+/* Community Feedback & Reviews Section */
+.community-section {
+  position: relative;
+  background: #08080c;
+  border-top: 1px solid var(--line);
+  padding: 90px 24px 100px;
+  overflow: hidden;
+}
+.community-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 380px;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(242, 180, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.community-card {
+  position: relative;
+  background: linear-gradient(150deg, rgba(20, 20, 26, 0.95) 0%, rgba(10, 10, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 38px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+.community-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(242, 180, 0, 0.5);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), 0 0 24px rgba(242, 180, 0, 0.16);
+}
+.community-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  opacity: 0.9;
+}
+.feedback-card::before {
+  background: linear-gradient(90deg, #F2B400 0%, #FFA000 100%);
+}
+.community-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.community-tag {
+  font-family: var(--tech);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(242, 180, 0, 0.12);
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(242, 180, 0, 0.3);
+}
+.stars-rating {
+  display: inline-flex;
+  gap: 3px;
+  color: var(--gold);
+  font-size: 19px;
+  line-height: 1;
+  text-shadow: 0 0 8px var(--gold-glow);
+}
+.community-pill {
+  font-family: var(--tech);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9CE780;
+  background: rgba(156, 231, 128, 0.1);
+  padding: 4px 9px;
+  border-radius: 2px;
+  border: 1px solid rgba(156, 231, 128, 0.3);
+}
+.community-card-title {
+  font-family: var(--heading);
+  font-size: clamp(28px, 2.4vw, 36px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 12px;
+  line-height: 1.05;
+}
+.community-card-desc {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #C0C0C8;
+  margin: 0 0 22px;
+  flex-grow: 1;
+}
+.community-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 14px 0 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--tech);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #A4A4AF;
+}
+.meta-icon {
+  color: var(--gold);
+  font-size: 14px;
+}
+.suggestion-topics {
+  margin-bottom: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.topic-label {
+  display: block;
+  font-family: var(--tech);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8E8E98;
+  margin-bottom: 10px;
+}
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.topic-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #D6D6DC;
+  font-family: var(--tech);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.topic-chip:hover, .topic-chip.selected {
+  background: rgba(242, 180, 0, 0.18);
+  border-color: var(--gold);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.community-card-action {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.community-btn-review {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  justify-content: space-between;
+}
+.community-btn-feedback {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  justify-content: space-between;
+}
+.cta-arrow {
+  transition: transform 0.2s ease;
+}
+.community-btn-review:hover .cta-arrow {
+  transform: translate(3px, -3px);
+}
+.quick-form-toggle {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: var(--tech);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: center;
+  align-self: center;
+  transition: opacity 0.2s;
+}
+.quick-form-toggle:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+.inline-feedback-form {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.inline-feedback-form textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: var(--body);
+  font-size: 14px;
+  padding: 12px;
+  resize: vertical;
+  min-height: 70px;
+  box-sizing: border-box;
+}
+.inline-feedback-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(242, 180, 0, 0.3);
+}
+.inline-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.inline-submit-btn {
+  padding: 10px 20px;
+  font-size: 12px;
+  min-height: 40px;
+  letter-spacing: 0.12em;
+}
+.form-feedback-msg {
+  font-family: var(--tech);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #9CE780;
+}
+
 /* Download CTA Section */
 .download {
   position: relative;
@@ -1594,6 +1859,11 @@ dialog::backdrop {
 
   .news-grid { grid-template-columns: 1fr; gap: 30px; }
   .news-card h3 { font-size: 34px; }
+
+  .community-section { padding: 50px 16px 60px; }
+  .community-grid { grid-template-columns: 1fr; gap: 20px; }
+  .community-card { padding: 28px 22px; }
+  .community-card-title { font-size: 26px; }
 
   .download { min-height: 450px; }
   .download h2 { font-size: 80px; }
