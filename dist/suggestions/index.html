@@ -6,7 +6,7 @@
  <title>Give Suggestions | Wild Animal Survival Sim 3D | Gameyard</title>
  <meta name="description" content="Submit your suggestions, feature requests, and ideas for Wild Animal Survival Sim 3D directly to the Gameyard development team.">
  <meta name="theme-color" content="#000000">
- <link rel="stylesheet" href="../styles.css?v=5">
+ <link rel="stylesheet" href="styles.css?v=3">
  <style>
   .suggest-page {
     background: #08080c;
@@ -438,7 +438,7 @@
       banner.style.display = 'block';
       banner.style.borderColor = '#F2B400';
       banner.style.color = '#F2B400';
-      banner.innerHTML = '<strong>⏳ Sending...</strong> Delivering your suggestion to the Gameyard team (cricketsan123@gmail.com)...';
+      banner.innerHTML = '<strong>⏳ Sending...</strong> Delivering your suggestion to the Gameyard team...';
       banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
       const submitBtn = form.querySelector('button[type="submit"]');
@@ -462,7 +462,7 @@
       .then(() => {
         banner.style.borderColor = '#9CE780';
         banner.style.color = '#9CE780';
-        banner.innerHTML = '<strong>✔ Suggestion Delivered!</strong> Thank you for your feedback. Your suggestion has been sent directly to the development team at cricketsan123@gmail.com.';
+        banner.innerHTML = '<strong>✔ Suggestion Delivered!</strong> Thank you for your feedback. Your suggestion has been successfully submitted directly to the development team.';
         if (submitBtn) submitBtn.disabled = false;
         form.reset();
         chips[0].click();
@@ -475,7 +475,7 @@
         window.location.href = `mailto:cricketsan123@gmail.com?subject=${subject}&body=${body}`;
         banner.style.borderColor = '#9CE780';
         banner.style.color = '#9CE780';
-        banner.innerHTML = '<strong>✔ Suggestion Prepared!</strong> Opening email draft to cricketsan123@gmail.com...';
+        banner.innerHTML = '<strong>✔ Suggestion Prepared!</strong> Opening email draft...';
         if (submitBtn) submitBtn.disabled = false;
         form.reset();
         chips[0].click();

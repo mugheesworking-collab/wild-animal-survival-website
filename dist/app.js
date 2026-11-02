@@ -267,7 +267,7 @@ if (modalForm) {
     const submitBtn = modalForm.querySelector('button[type="submit"]');
 
     if (modalStatus) {
-      modalStatus.textContent = '⏳ Sending suggestion to cricketsan123@gmail.com...';
+      modalStatus.textContent = '⏳ Submitting your suggestion to the dev team...';
       modalStatus.style.color = '#F2B400';
     }
     if (submitBtn) submitBtn.disabled = true;
@@ -290,7 +290,7 @@ if (modalForm) {
     })
     .then(() => {
       if (modalStatus) {
-        modalStatus.textContent = '✔ Thank you! Your suggestion has been sent to cricketsan123@gmail.com';
+        modalStatus.textContent = '✔ Thank you! Your suggestion has been sent to the Gameyard dev team.';
         modalStatus.style.color = '#9CE780';
       }
       setTimeout(() => {
@@ -307,7 +307,7 @@ if (modalForm) {
       );
       window.location.href = `mailto:cricketsan123@gmail.com?subject=${subject}&body=${body}`;
       if (modalStatus) {
-        modalStatus.textContent = '✔ Opening email draft to cricketsan123@gmail.com...';
+        modalStatus.textContent = '✔ Suggestion prepared! Opening email draft...';
         modalStatus.style.color = '#9CE780';
       }
       setTimeout(() => {
