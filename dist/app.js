@@ -170,7 +170,7 @@ let activeTopic = 'New Animals';
 
 function updateMailtoLink(customText = '') {
   if (!suggestionMailBtn) return;
-  const supportEmail = (window.GAME && window.GAME.supportEmail) || 'hushgamesmarketing@gmail.com';
+  const supportEmail = (window.GAME && window.GAME.supportEmail) || 'cricketsan123@gmail.com';
   const subject = encodeURIComponent(`Wild Animal Survival Sim 3D - Suggestion [${activeTopic}]`);
   const body = encodeURIComponent(
     `Hi Gameyard Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Topic: ${activeTopic}\n- Idea:\n${customText || '(Write your suggestion here)'}\n\nThanks!`
@@ -262,23 +262,59 @@ if (modalForm) {
     const cat = modalCatInput ? modalCatInput.value : 'General';
     const title = (document.getElementById('modal-title-input') || {}).value || '';
     const details = (document.getElementById('modal-details-input') || {}).value || '';
-    const name = (document.getElementById('modal-name-input') || {}).value || 'Player';
+    const name = (document.getElementById('modal-name-input') || {}).value || 'Anonymous Hunter';
     const email = (document.getElementById('modal-email-input') || {}).value || '';
+    const submitBtn = modalForm.querySelector('button[type="submit"]');
 
     if (modalStatus) {
-      modalStatus.textContent = '✔ Thank you! Preparing your email draft to Gameyard...';
+      modalStatus.textContent = '⏳ Sending suggestion to cricketsan123@gmail.com...';
+      modalStatus.style.color = '#F2B400';
     }
+    if (submitBtn) submitBtn.disabled = true;
 
-    const subject = encodeURIComponent(`Wild Animal Survival Sim 3D - Suggestion [${cat}]: ${title}`);
-    const body = encodeURIComponent(
-      `Hi Gameyard Development Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Topic: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThanks!`
-    );
-    const mailto = `mailto:hushgamesmarketing@gmail.com?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
-      window.location.href = mailto;
-      if (suggModal) suggModal.close();
-    }, 700);
+    // Send direct email notification to cricketsan123@gmail.com
+    fetch('https://formsubmit.co/ajax/cricketsan123@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: `Wild Animal Survival Sim 3D Suggestion [${cat}]: ${title}`,
+        category: cat,
+        title: title,
+        details: details,
+        player_name: name,
+        player_email: email || 'Not provided'
+      })
+    })
+    .then(() => {
+      if (modalStatus) {
+        modalStatus.textContent = '✔ Thank you! Your suggestion has been sent to cricketsan123@gmail.com';
+        modalStatus.style.color = '#9CE780';
+      }
+      setTimeout(() => {
+        if (suggModal) suggModal.close();
+        if (submitBtn) submitBtn.disabled = false;
+        modalForm.reset();
+        if (modalStatus) modalStatus.textContent = '';
+      }, 2000);
+    })
+    .catch(() => {
+      const subject = encodeURIComponent(`Wild Animal Survival Sim 3D - Suggestion [${cat}]: ${title}`);
+      const body = encodeURIComponent(
+        `Hi Gameyard Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Topic: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThanks!`
+      );
+      window.location.href = `mailto:cricketsan123@gmail.com?subject=${subject}&body=${body}`;
+      if (modalStatus) {
+        modalStatus.textContent = '✔ Opening email draft to cricketsan123@gmail.com...';
+        modalStatus.style.color = '#9CE780';
+      }
+      setTimeout(() => {
+        if (suggModal) suggModal.close();
+        if (submitBtn) submitBtn.disabled = false;
+      }, 2000);
+    });
   });
 }
 

@@ -2,7 +2,8 @@ window.GAME = {
   title: 'Wild Animal Survival Sim 3D', studio: 'Gameyard',
   playUrl: 'https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game',
   privacyUrl: 'https://hushgamesmusik.blogspot.com/2019/10/hush-games-privacy-policy.html',
-  supportEmail: 'hushgamesmarketing@gmail.com',
+  supportEmail: 'cricketsan123@gmail.com',
+  suggestionEmail: 'cricketsan123@gmail.com',
   hero: { kicker: 'THE WILDERNESS IS CALLING', body: 'Follow your instincts. Face the wilderness. Make every hunt count.' },
   modes: [
     { name:'Hunt', eyebrow:'01 / TRUST YOUR INSTINCTS', title:'THE CHASE IS ON.', text:'Track prey, close the distance, and choose your moment to strike. Take on hunting missions across the wilderness.', image:4 },

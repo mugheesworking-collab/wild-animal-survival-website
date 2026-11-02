@@ -6,7 +6,7 @@
  <title>Give Suggestions | Wild Animal Survival Sim 3D | Gameyard</title>
  <meta name="description" content="Submit your suggestions, feature requests, and ideas for Wild Animal Survival Sim 3D directly to the Gameyard development team.">
  <meta name="theme-color" content="#000000">
- <link rel="stylesheet" href="../styles.css?v=4">
+ <link rel="stylesheet" href="../styles.css?v=5">
  <style>
   .suggest-page {
     background: #08080c;
@@ -434,24 +434,52 @@
         loadRecent();
       } catch(err){}
 
-      // Show success
+      // Show sending banner
       banner.style.display = 'block';
+      banner.style.borderColor = '#F2B400';
+      banner.style.color = '#F2B400';
+      banner.innerHTML = '<strong>⏳ Sending...</strong> Delivering your suggestion to the Gameyard team (cricketsan123@gmail.com)...';
       banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-      // Create Mailto Link
-      const subject = encodeURIComponent(`Wild Animal Survival 3D - Suggestion [${cat}]: ${title}`);
-      const body = encodeURIComponent(
-        `Hi Gameyard Development Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Category: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThank you!`
-      );
-      const mailtoUrl = `mailto:hushgamesmarketing@gmail.com?subject=${subject}&body=${body}`;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
 
-      // Open mail client
-      setTimeout(() => {
-        window.location.href = mailtoUrl;
-      }, 600);
-
-      form.reset();
-      chips[0].click();
+      fetch('https://formsubmit.co/ajax/cricketsan123@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `Wild Animal Survival 3D Suggestion [${cat}]: ${title}`,
+          category: cat,
+          title: title,
+          details: details,
+          player_name: name,
+          player_email: email || 'Not provided'
+        })
+      })
+      .then(() => {
+        banner.style.borderColor = '#9CE780';
+        banner.style.color = '#9CE780';
+        banner.innerHTML = '<strong>✔ Suggestion Delivered!</strong> Thank you for your feedback. Your suggestion has been sent directly to the development team at cricketsan123@gmail.com.';
+        if (submitBtn) submitBtn.disabled = false;
+        form.reset();
+        chips[0].click();
+      })
+      .catch(() => {
+        const subject = encodeURIComponent(`Wild Animal Survival 3D - Suggestion [${cat}]: ${title}`);
+        const body = encodeURIComponent(
+          `Hi Gameyard Development Team,\n\nI have a suggestion for Wild Animal Survival Sim 3D:\n\n- Category: ${cat}\n- Title: ${title}\n- Details:\n${details}\n\n- Submitted By: ${name}${email ? ' (' + email + ')' : ''}\n\nThank you!`
+        );
+        window.location.href = `mailto:cricketsan123@gmail.com?subject=${subject}&body=${body}`;
+        banner.style.borderColor = '#9CE780';
+        banner.style.color = '#9CE780';
+        banner.innerHTML = '<strong>✔ Suggestion Prepared!</strong> Opening email draft to cricketsan123@gmail.com...';
+        if (submitBtn) submitBtn.disabled = false;
+        form.reset();
+        chips[0].click();
+      });
     });
   }
  </script>
