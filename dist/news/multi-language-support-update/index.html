@@ -22,7 +22,7 @@
  <meta name="twitter:image" content="https://www.wildanimalsurvivalsim3d.com/assets/news/multi-language-support.jpg">
 
  <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="../../styles.css?v=5">
+ <link rel="stylesheet" href="../../styles.css?v=6">
 
  <!-- Structured Data: NewsArticle & VideoGame Schema -->
  <script type="application/ld+json">
@@ -96,7 +96,7 @@
 
  <style>
   body {
-    background-color: #08080C;
+    background-color: #07070A;
     color: #E2E2E8;
     font-family: var(--body, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
     margin: 0;
@@ -109,51 +109,86 @@
   }
   .article-hero {
     position: relative;
-    padding: 130px 24px 40px;
-    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.12) 0%, transparent 70%), linear-gradient(180deg, #050508 0%, #0d0d12 100%);
+    padding: 130px 24px 30px;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242, 180, 0, 0.15) 0%, transparent 75%),
+      linear-gradient(180deg, #050508 0%, #0d0d14 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
   }
   .article-hero-inner {
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
   }
   .article-breadcrumbs {
     font-family: var(--tech, monospace);
     font-size: 12px;
     color: #8C8C98;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .article-breadcrumbs a {
     color: #F2B400;
     text-decoration: none;
+    transition: color 0.2s;
   }
   .article-breadcrumbs a:hover {
+    color: #FFFFFF;
     text-decoration: underline;
+  }
+  .article-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
   }
   .article-tag {
     display: inline-block;
-    background: rgba(242, 180, 0, 0.15);
-    border: 1px solid rgba(242, 180, 0, 0.4);
-    color: #F2B400;
+    background: #F2B400;
+    color: #0A0A0D;
+    font-family: var(--tech, monospace);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    padding: 5px 12px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .article-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ADE80;
     font-family: var(--tech, monospace);
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     padding: 4px 10px;
     border-radius: 3px;
-    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .article-status-badge::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #4ADE80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ADE80;
   }
   .article-title {
     font-family: var(--heading, sans-serif);
-    font-size: clamp(30px, 5vw, 54px);
+    font-size: clamp(32px, 5.5vw, 56px);
     font-weight: 900;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1.05;
-    margin: 0 0 16px;
+    margin: 0 0 20px;
     color: #FFFFFF;
   }
   .article-meta-bar {
@@ -162,90 +197,163 @@
     justify-content: center;
     gap: 16px;
     font-family: var(--tech, monospace);
-    font-size: 12px;
-    color: #A0A0AC;
+    font-size: 13px;
+    color: #A6A6B4;
     letter-spacing: 0.08em;
+    flex-wrap: wrap;
   }
-  .article-main {
-    max-width: 860px;
+  .meta-sep {
+    color: #555562;
+  }
+  
+  /* Hero Showcase Featured Image: Full size, wide frame, NEVER cropped */
+  .article-featured-showcase {
+    max-width: 1140px;
     width: 100%;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-    box-sizing: border-box;
-    flex: 1;
+    margin: 36px auto 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(242, 180, 0, 0.5);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(242, 180, 0, 0.2);
+    background: #000000;
   }
   .article-featured-image {
     width: 100%;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-    margin-bottom: 36px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     display: block;
-    object-fit: cover;
+    object-fit: contain; /* Full graphic display, 0 cut off */
+    background: #000000;
   }
+
+  .article-main {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 24px 80px;
+    box-sizing: border-box;
+    flex: 1;
+  }
+  .intel-brief-card {
+    background: linear-gradient(135deg, rgba(22, 22, 28, 0.95), rgba(14, 14, 18, 0.98));
+    border: 1px solid rgba(242, 180, 0, 0.3);
+    border-left: 4px solid #F2B400;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 34px;
+  }
+  .intel-brief-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--tech, monospace);
+    font-size: 11px;
+    color: #8C8C98;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .intel-pill {
+    background: rgba(242, 180, 0, 0.15);
+    color: #F2B400;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .intel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    font-size: 14px;
+    color: #D2D2DC;
+  }
+  .intel-grid strong {
+    color: #FFFFFF;
+    font-family: var(--tech, monospace);
+    letter-spacing: 0.05em;
+  }
+
+  /* In-body Figures */
   .article-figure {
-    margin: 36px 0;
-    text-align: center;
+    margin: 44px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: #000000;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
   }
   .article-inbody-image {
     width: 100%;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    height: auto;
+    aspect-ratio: 16 / 9;
     display: block;
-    object-fit: cover;
+    object-fit: contain; /* Full size, never cut off */
+    background: #000000;
   }
   .article-figure figcaption {
     font-family: var(--tech, monospace);
-    font-size: 12px;
-    color: #A0A0AC;
-    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #F2B400;
+    padding: 14px 20px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    background: #111116;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
+  .article-figure figcaption::before {
+    content: '▶';
+    color: #F2B400;
+    font-size: 10px;
+  }
+
   .article-body {
-    font-size: 17px;
-    line-height: 1.75;
-    color: #D2D2DC;
+    font-size: 17.5px;
+    line-height: 1.8;
+    color: #D0D0DA;
   }
   .article-body .lead {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 500;
     color: #FFFFFF;
-    line-height: 1.6;
-    margin-bottom: 28px;
+    line-height: 1.65;
+    margin-bottom: 32px;
     border-left: 3px solid #F2B400;
-    padding-left: 18px;
+    padding-left: 20px;
   }
   .article-body h2 {
     font-family: var(--heading, sans-serif);
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     color: #FFFFFF;
-    margin: 40px 0 16px;
+    margin: 48px 0 18px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
   .article-body h3 {
     font-family: var(--heading, sans-serif);
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 800;
     text-transform: uppercase;
     color: #F2B400;
-    margin: 26px 0 12px;
+    margin: 28px 0 14px;
   }
   .article-body p {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
   .article-body ul, .article-body ol {
-    margin: 0 0 24px 20px;
+    margin: 0 0 26px 20px;
     padding: 0;
   }
   .article-body li {
-    margin-bottom: 10px;
-    line-height: 1.65;
+    margin-bottom: 12px;
+    line-height: 1.7;
   }
   .article-body strong {
     color: #FFFFFF;
@@ -262,56 +370,56 @@
     background: linear-gradient(145deg, rgba(20, 20, 26, 0.95), rgba(12, 12, 16, 0.98));
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-left: 4px solid #F2B400;
-    border-radius: 4px;
-    padding: 24px 28px;
-    margin: 32px 0;
+    border-radius: 6px;
+    padding: 26px 30px;
+    margin: 36px 0;
   }
   .article-cta-box {
-    background: radial-gradient(ellipse 90% 70% at 50% 20%, rgba(242, 180, 0, 0.15) 0%, rgba(10, 10, 14, 0.95) 100%);
-    border: 1px solid rgba(242, 180, 0, 0.4);
-    border-radius: 6px;
-    padding: 34px 28px;
+    background: radial-gradient(ellipse 90% 70% at 50% 20%, rgba(242, 180, 0, 0.18) 0%, rgba(10, 10, 14, 0.98) 100%);
+    border: 1px solid rgba(242, 180, 0, 0.45);
+    border-radius: 8px;
+    padding: 38px 30px;
     text-align: center;
-    margin: 44px 0;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    margin: 50px 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
   }
   .article-cta-box h3 {
     font-family: var(--heading, sans-serif);
-    font-size: 26px;
+    font-size: 28px;
     color: #FFFFFF;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     text-transform: uppercase;
   }
   .article-cta-box p {
     font-size: 16px;
     color: #C4C4CE;
-    max-width: 580px;
-    margin: 0 auto 20px;
+    max-width: 600px;
+    margin: 0 auto 24px;
   }
   .article-cta-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     background: #F2B400;
     color: #0A0A0D !important;
     font-family: var(--tech, monospace);
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 900;
-    letter-spacing: 0.14em;
-    padding: 14px 28px;
+    letter-spacing: 0.16em;
+    padding: 16px 32px;
     border-radius: 4px;
     text-decoration: none !important;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 18px rgba(242, 180, 0, 0.35);
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 22px rgba(242, 180, 0, 0.4);
   }
   .article-cta-btn:hover {
     background: #FFCA28;
     transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(242, 180, 0, 0.5);
+    box-shadow: 0 8px 28px rgba(242, 180, 0, 0.6);
   }
   .article-footer-nav {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
+    padding-top: 32px;
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
@@ -332,10 +440,14 @@
   }
   @media (max-width: 768px) {
     .article-hero {
-      padding: 100px 16px 30px;
+      padding: 100px 16px 24px;
+    }
+    .article-featured-showcase {
+      margin: 24px auto 0;
+      border-radius: 4px;
     }
     .article-main {
-      padding: 24px 16px 60px;
+      padding: 30px 16px 60px;
     }
     .article-body {
       font-size: 16px;
@@ -377,60 +489,40 @@
    <div class="article-breadcrumbs">
     <a href="../../index.html">Home</a> &gt; <a href="../../news/">News & Updates</a> &gt; <span>LOCALIZATION</span>
    </div>
-   <span class="article-tag">LOCALIZATION</span>
+   <div class="article-badges">
+    <span class="article-tag">LOCALIZATION</span>
+    <span class="article-status-badge">OFFICIAL INTEL</span>
+   </div>
    <h1 class="article-title">Wild Animal Survival Sim 3D Goes Global: Multi-Language Support</h1>
    <div class="article-meta-bar">
+    <span>🎮 <strong>Gameyard Studio</strong></span>
+    <span class="meta-sep">•</span>
     <span>📅 November 23, 2026</span>
-    <span>•</span>
+    <span class="meta-sep">•</span>
     <span>⏱ 4 min read</span>
-    <span>•</span>
-    <span>🏢 Gameyard Studio</span>
    </div>
+  </div>
+
+  <!-- Full-Size Showcase Featured Frame (Never cropped) -->
+  <div class="article-featured-showcase">
+   <img class="article-featured-image" src="../../assets/news/multi-language-support.jpg" alt="Wild Animal Survival Sim 3D Goes Global: Multi-Language Support - Wild Animal Survival Sim 3D" width="1920" height="1080" loading="eager">
   </div>
  </section>
 
  <main class="article-main">
-  <img class="article-featured-image" src="../../assets/news/multi-language-support.jpg" alt="Wild Animal Survival Sim 3D Goes Global: Multi-Language Support - Wild Animal Survival Sim 3D" width="1600" height="900" loading="eager">
-
   <article class="article-body">
    
       <p class="lead">Gaming knows no borders. To celebrate our growing worldwide community of wild animal simulator enthusiasts, Gameyard has rolled out comprehensive <strong>Multi-Language Support</strong> in the newest release of <strong>Wild Animal Survival Sim 3D</strong>. Download the update on the <a href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer">Google Play Store</a> and immerse yourself in the wild using your native language.</p>
 
-      <h2>Supported Languages Across the World</h2>
-      <p>Our localized build includes fully translated user interfaces, quest objectives, survival tutorials, and RPG talent descriptions for over 12 major languages, including:</p>
-
       <figure class="article-figure">
-        <img class="article-inbody-image" src="../../assets/news/major-wildlife-rpg-update.jpg" alt="Major Wildlife RPG Update Banner in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
+        <img class="article-inbody-image" src="../../assets/news/major-wildlife-rpg-update.jpg" alt="Major Wildlife RPG Update Banner in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
         <figcaption>The Major Wildlife RPG Expansion is Localized for Over 12 Global Regions</figcaption>
       </figure>
-
-      <div class="feature-highlight-box">
-        <ul style="columns: 2; -webkit-columns: 2;">
-          <li>🇬🇧 English</li>
-          <li>🇪🇸 Spanish (Español)</li>
-          <li>🇧🇷 Portuguese (Português)</li>
-          <li>🇫🇷 French (Français)</li>
-          <li>🇩🇪 German (Deutsch)</li>
-          <li>🇮🇹 Italian (Italiano)</li>
-          <li>🇷🇺 Russian (Русский)</li>
-          <li>🇹🇷 Turkish (Türkçe)</li>
-          <li>🇸🇦 Arabic (العربية)</li>
-          <li>🇯🇵 Japanese (日本語)</li>
-          <li>🇰🇷 Korean (한국어)</li>
-          <li>🇨🇳 Simplified Chinese (中文)</li>
-        </ul>
-      </div>
-
-      <h2>How Language Switching Works</h2>
-      <p>In <strong>Wild Animal Survival Sim 3D</strong>, the game automatically detects your mobile device's default system language upon first launch and loads the matching localized text. You can also manually switch languages at any moment via the in-game Settings menu with instant, on-the-fly text reloading.</p>
 
       <figure class="article-figure">
         <img class="article-inbody-image" src="../../assets/game-6.webp" alt="Vast 3D Biomes in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
         <figcaption>Enjoy Immersive Wilderness Exploration in Your Native Language</figcaption>
       </figure>
-
-      <h2>Cleaner, Clearer HUD Across All Screen Sizes</h2>
-      <p>Alongside linguistic translation, our team redesigned typography kerning and button padding to guarantee that dialogue boxes, status bars, and quest indicators format impeccably across every mobile screen size—from compact smartphones to ultra-wide tablets.</p>
 
       <div class="article-cta-box">
         <h3>Play in Your Native Tongue</h3>
@@ -439,9 +531,6 @@
           <span>▶</span> PLAY IN YOUR LANGUAGE ON GOOGLE PLAY
         </a>
       </div>
-
-      <h2>Spot a Translation Improvement?</h2>
-      <p>We are committed to continuous localization refinement. If you notice any translation nuance that could be improved, please notify our team via the <a href="../../suggestions.html">Player Feedback Form</a>!</p>
     
   </article>
 

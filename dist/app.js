@@ -125,15 +125,12 @@ function showImage(){const media=game.media[activeImage];$('#lightbox-image').sr
 function stepImage(delta){activeImage=(activeImage+delta+game.media.length)%game.media.length;showImage();}
 $('#previous-image').addEventListener('click',()=>stepImage(-1));$('#next-image').addEventListener('click',()=>stepImage(1));$('#close-lightbox').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',()=>document.body.classList.remove('locked'));dialog.addEventListener('click',event=>{if(event.target===dialog){const box=dialog.getBoundingClientRect();if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();}});dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')stepImage(-1);if(event.key==='ArrowRight')stepImage(1);});
 const now = new Date();
-const allArticles = game.articles || [];
-const displayCards = allArticles.slice(0, 3);
-displayCards.forEach(news => {
+const publishedArticles = (game.articles || []).filter(item => new Date(item.publishDate) <= now);
+publishedArticles.forEach(news => {
   const a = document.createElement('a');
   a.className = 'news-card';
   a.href = `news/${news.slug}/`;
-  const isPending = new Date(news.publishDate) > now;
-  const tagText = isPending ? `UNLOCKS ${news.displayDate.split(',')[0].toUpperCase()} 1:00 PM` : news.tag;
-  a.innerHTML = `<div class="news-image"><img src="${news.image}" alt="${news.title} - Wild Animal Survival Sim 3D" loading="lazy" width="1600" height="900"></div><p class="eyebrow">${tagText}</p><h3>${news.title}</h3><p>${news.text}</p><span class="text-link">${isPending ? 'PREVIEW INTEL' : 'READ INTEL'} ↗</span>`;
+  a.innerHTML = `<div class="news-image"><img src="${news.image}" alt="${news.title} - Wild Animal Survival Sim 3D" loading="lazy" width="1600" height="900"></div><p class="eyebrow">${news.tag}</p><h3>${news.title}</h3><p>${news.text}</p><span class="text-link">READ INTEL ↗</span>`;
   $('#news-list').append(a);
 });
 $('.menu-button').addEventListener('click',()=>{const open=$('.menu-button').getAttribute('aria-expanded')==='true';$('.menu-button').setAttribute('aria-expanded',!open);$('.menu-button').setAttribute('aria-label',open?'Open menu':'Close menu');$('#navigation').classList.toggle('open',!open);});
