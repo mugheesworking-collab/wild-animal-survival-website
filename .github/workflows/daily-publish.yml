@@ -1,0 +1,43 @@
+name: Daily SEO Article Publisher & Search Ping (1:00 PM PKT)
+
+on:
+  schedule:
+    # 08:00 UTC = 13:00 PKT (1:00 PM Pakistan Standard Time) every day
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Rebuild SEO Articles & Sitemap
+        run: node scripts/build-seo-articles.mjs
+
+      - name: Ping Search Engines (Google & Bing)
+        run: |
+          echo "Pinging Google and Bing sitemaps for Wild Animal Survival Sim 3D..."
+          curl -s "https://www.google.com/ping?sitemap=https://www.wildanimalsurvivalsim3d.com/sitemap.xml" || true
+          curl -s "https://www.bing.com/ping?sitemap=https://www.wildanimalsurvivalsim3d.com/sitemap.xml" || true
+
+      - name: Commit & Push if sitemap changed
+        run: |
+          git config --global user.name "Gameyard Automation"
+          git config --global user.email "cricketsan123@gmail.com"
+          git add dist/sitemap.xml dist/robots.txt
+          if git diff --staged --quiet; then
+            echo "No sitemap changes to commit."
+          else
+            git commit -m "chore(seo): update sitemap and ping search engines [skip ci]"
+            git push
+          fi

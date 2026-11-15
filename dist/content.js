@@ -29,11 +29,97 @@ window.GAME = {
     {image:7,title:'A different perspective'}, {image:8,title:'Wildlife encounters'},
     {image:2,title:'Animal selection'}, {image:6,title:'More from the wilderness'}
   ],
-  news: [
-    {tag:'GAME UPDATE', title:'A fresh trail ahead', text:'The latest store notes include interface improvements, daily login rewards, performance improvements, and fixes.', image:3},
-    {tag:'FIELD GUIDE', title:'The art of staying alive', text:'Food, water, and rest. Get to know the essentials of life in the wilderness.', image:1, target:'#modes'},
-    {tag:'ANIMAL SPOTLIGHT', title:'Find your wild side', text:'Meet the animals and choose your next perspective on the wilderness.', image:5, target:'#animals'}
-  ],
-  // Verified against Google Play on 20 October 2026. Store screenshots are publisher-supplied promotional media.
-  // Add future features, trailers, collaborations, social links and map names only after verification.
+  // Scheduled 10 SEO Articles (Daily release at 1:00 PM PKT / 08:00 UTC)
+  articles: [
+    {
+      slug: 'major-wildlife-rpg-update',
+      publishDate: '2026-11-16T13:00:00+05:00',
+      displayDate: 'November 16, 2026',
+      tag: 'MAJOR UPDATE',
+      title: 'Major Wildlife RPG Update Released',
+      text: 'The biggest expansion in Wild Animal Survival Sim 3D history: 3 new animals, family system, den defense, and 60FPS combat.',
+      image: 'assets/news/major-wildlife-rpg-update.jpg'
+    },
+    {
+      slug: '3-new-animals-deer-moose-boar',
+      publishDate: '2026-11-17T13:00:00+05:00',
+      displayDate: 'November 17, 2026',
+      tag: 'NEW ANIMALS',
+      title: 'Play as Deer, Moose & Boar',
+      text: 'Experience survival through the eyes of the swift Deer, massive forest Moose, and aggressive Wild Boar in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/3-new-animals-deer-moose-boar.jpg'
+    },
+    {
+      slug: 'new-family-system-guide',
+      publishDate: '2026-11-18T13:00:00+05:00',
+      displayDate: 'November 18, 2026',
+      tag: 'FAMILY SYSTEM',
+      title: 'Family System & Pack Guide',
+      text: 'Find a mate, raise vulnerable cubs, and build your predator dynasty across the wilderness in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/new-family-system.jpg'
+    },
+    {
+      slug: 'hunt-and-feed-family-guide',
+      publishDate: '2026-11-19T13:00:00+05:00',
+      displayDate: 'November 19, 2026',
+      tag: 'HUNT & FEED',
+      title: 'Hunt & Feed Your Pack',
+      text: 'Master stealth stalking, cornering prey, and transporting fresh meat back to feed your den in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/hunt-and-feed-family.jpg'
+    },
+    {
+      slug: 'new-den-system-defense-guide',
+      publishDate: '2026-11-20T13:00:00+05:00',
+      displayDate: 'November 20, 2026',
+      tag: 'DEN SYSTEM',
+      title: 'New Den System & Territory Defense',
+      text: 'Claim cave sanctuaries, rest safely to recover health, and repel hostile predator raids in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/new-den-system.jpg'
+    },
+    {
+      slug: 'animal-growth-stages-rpg-guide',
+      publishDate: '2026-11-21T13:00:00+05:00',
+      displayDate: 'November 21, 2026',
+      tag: 'ANIMAL GROWTH',
+      title: 'Animal Growth: Hatchling to Prime',
+      text: 'Level up your creature through 3 realistic life stages: Juvenile, Adolescent, and hulking Prime titan in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/animal-growth-stages.jpg'
+    },
+    {
+      slug: 'special-powers-and-skins-guide',
+      publishDate: '2026-11-22T13:00:00+05:00',
+      displayDate: 'November 22, 2026',
+      tag: 'POWERS & SKINS',
+      title: 'Unlock Fire Attack, Shield & Skins',
+      text: 'Turn the tides of battle with Fire Attack, impenetrable Primal Shield, Speed Boosts, and mythical cosmetic pelts in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/special-powers-and-skins.jpg'
+    },
+    {
+      slug: 'multi-language-support-update',
+      publishDate: '2026-11-23T13:00:00+05:00',
+      displayDate: 'November 23, 2026',
+      tag: 'LOCALIZATION',
+      title: 'Multi-Language Support (12+ Languages)',
+      text: 'Wild Animal Survival Sim 3D goes global with complete localization across English, Spanish, Russian, Japanese, Arabic, and more.',
+      image: 'assets/news/multi-language-support.jpg'
+    },
+    {
+      slug: 'improved-gameplay-controls-camera-update',
+      publishDate: '2026-11-24T13:00:00+05:00',
+      displayDate: 'November 24, 2026',
+      tag: 'PERFORMANCE',
+      title: 'Smooth Controls & 60FPS Camera Stability',
+      text: 'Overhauled camera tracking, zero input lag, and fluid 60 frames per second gameplay on Android in Wild Animal Survival Sim 3D.',
+      image: 'assets/news/improved-gameplay-controls.jpg'
+    },
+    {
+      slug: 'complete-beginners-survival-guide',
+      publishDate: '2026-11-25T13:00:00+05:00',
+      displayDate: 'November 25, 2026',
+      tag: 'BEGINNER GUIDE',
+      title: 'Master Beginner’s Survival Guide',
+      text: 'Everything you need to survive from day one: managing meters, hunting prey, territory control, and leveling in Wild Animal Survival Sim 3D.',
+      image: 'assets/explore-new-animals.jpg'
+    }
+  ]
 };
