@@ -33,7 +33,7 @@ window.GAME = {
   articles: [
     {
       slug: 'major-wildlife-rpg-update',
-      publishDate: '2026-11-16T13:00:00+05:00',
+      publishDate: '2026-11-16T00:00:00+05:00',
       displayDate: 'November 16, 2026',
       tag: 'MAJOR UPDATE',
       title: 'Major Wildlife RPG Update Released',

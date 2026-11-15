@@ -22,7 +22,7 @@
  <meta name="twitter:image" content="https://www.wildanimalsurvivalsim3d.com/assets/explore-new-animals.jpg">
 
  <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="../../styles.css?v=4">
+ <link rel="stylesheet" href="../styles.css?v=5">
 
  <!-- Structured Data: NewsArticle & VideoGame Schema -->
  <script type="application/ld+json">
@@ -183,6 +183,26 @@
     display: block;
     object-fit: cover;
   }
+  .article-figure {
+    margin: 36px 0;
+    text-align: center;
+  }
+  .article-inbody-image {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    display: block;
+    object-fit: cover;
+  }
+  .article-figure figcaption {
+    font-family: var(--tech, monospace);
+    font-size: 12px;
+    color: #A0A0AC;
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
   .article-body {
     font-size: 17px;
     line-height: 1.75;
@@ -329,24 +349,24 @@
 <body class="article-page">
  <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
   <div class="header-left">
-   <a class="brand" href="../../index.html#home" aria-label="Back to home">
+   <a class="brand" href="../index.html#home" aria-label="Back to home">
     <span class="brand-studio">GAMEYARD</span>
     <span class="brand-divider">|</span>
     <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
    </a>
   </div>
   <nav id="navigation" aria-label="Main navigation">
-   <a href="../../index.html#modes">THE GAME</a>
-   <a href="../../index.html#worlds">WORLDS</a>
-   <a href="../../index.html#animals">ROSTER</a>
-   <a href="../../news/">NEWS</a>
+   <a href="../index.html#modes">THE GAME</a>
+   <a href="../index.html#worlds">WORLDS</a>
+   <a href="../index.html#animals">ROSTER</a>
+   <a href="../news/">NEWS</a>
   </nav>
   <div class="header-right">
    <a class="header-play-link" data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" aria-label="Play on Google Play">
     <span>▶</span>
     <span>PLAY NOW</span>
    </a>
-   <a class="header-cta" href="../../suggestions.html" aria-label="Give Suggestions">
+   <a class="header-cta" href="../suggestions.html" aria-label="Give Suggestions">
     <span>GIVE SUGGESTIONS</span>
    </a>
   </div>
@@ -355,7 +375,7 @@
  <section class="article-hero">
   <div class="article-hero-inner">
    <div class="article-breadcrumbs">
-    <a href="../../index.html">Home</a> &gt; <a href="../../news/">News & Updates</a> &gt; <span>BEGINNER GUIDE</span>
+    <a href="../index.html">Home</a> &gt; <a href="../news/">News & Updates</a> &gt; <span>BEGINNER GUIDE</span>
    </div>
    <span class="article-tag">BEGINNER GUIDE</span>
    <h1 class="article-title">Master Beginner’s Survival Guide for Wild Animal Survival Sim 3D</h1>
@@ -370,7 +390,7 @@
  </section>
 
  <main class="article-main">
-  <img class="article-featured-image" src="../../assets/explore-new-animals.jpg" alt="Master Beginner’s Survival Guide for Wild Animal Survival Sim 3D - Wild Animal Survival Sim 3D" width="1600" height="900" loading="eager">
+  <img class="article-featured-image" src="../assets/explore-new-animals.jpg" alt="Master Beginner’s Survival Guide for Wild Animal Survival Sim 3D - Wild Animal Survival Sim 3D" width="1600" height="900" loading="eager">
 
   <article class="article-body">
    
@@ -378,26 +398,38 @@
 
       <h2>1. Managing Your 3 Survival Meters</h2>
       <p>At the core of <strong>Wild Animal Survival Sim 3D</strong> are three vital survival indicators located at the top of your screen:</p>
+
+      <figure class="article-figure">
+        <img class="article-inbody-image" src="../assets/game-5.webp" alt="Managing Survival in the Open Savanna in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
+        <figcaption>Balance Hunger, Thirst, and Energy as You Traverse Vast Wilderness Worlds</figcaption>
+      </figure>
+
       <ul>
-        <li><strong>Health (Red Bar):</strong> Decreases when damaged by hostile beasts or suffering from starvation/dehydration. Rest inside your <a href="../new-den-system-defense-guide/">den</a> to regenerate health quickly.</li>
-        <li><strong>Hunger (Orange Bar):</strong> Depletes continuously as your beast walks and runs. Replenish it by hunting prey animals across the map. Read our <a href="../hunt-and-feed-family-guide/">Hunt & Feed Guide</a> for advanced tactics.</li>
-        <li><strong>Thirst & Stamina (Blue Bar):</strong> Stamina powers sprinting, leaping, and special attacks. Thirst must be satisfied by visiting freshwater rivers and oasis pools in <a href="../../index.html#worlds">our expansive biomes</a>.</li>
+        <li><strong>Health (Red Bar):</strong> Decreases when damaged by hostile beasts or suffering from starvation/dehydration. Rest inside your <a href="../news/new-den-system-defense-guide/">den</a> to regenerate health quickly.</li>
+        <li><strong>Hunger (Orange Bar):</strong> Depletes continuously as your beast walks and runs. Replenish it by hunting prey animals across the map. Read our <a href="../news/hunt-and-feed-family-guide/">Hunt & Feed Guide</a> for advanced tactics.</li>
+        <li><strong>Thirst & Stamina (Blue Bar):</strong> Stamina powers sprinting, leaping, and special attacks. Thirst must be satisfied by visiting freshwater rivers and oasis pools in <a href="../index.html#worlds">our expansive biomes</a>.</li>
       </ul>
 
       <h2>2. Choosing Your Starter Predator</h2>
       <p>Every beast offers unique strengths suited to specific playstyles:</p>
+
+      <figure class="article-figure">
+        <img class="article-inbody-image" src="../assets/news/new-den-system.jpg" alt="Establish Your Den Sanctuary in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
+        <figcaption>Secure a Safe Den Base Early in Your Journey to Rest and Protect Cubs</figcaption>
+      </figure>
+
       <div class="feature-highlight-box">
         <h3>Starter Beast Recommendations:</h3>
         <ul>
-          <li><strong>The Wolf (Balanced Leader):</strong> Exceptional endurance, pack coordination, and balanced stats. Best for players eager to explore the <a href="../new-family-system-guide/">Family System</a>.</li>
+          <li><strong>The Wolf (Balanced Leader):</strong> Exceptional endurance, pack coordination, and balanced stats. Best for players eager to explore the <a href="../news/new-family-system-guide/">Family System</a>.</li>
           <li><strong>The Tiger (High Damage Ambush):</strong> Tremendous burst bite damage and stealth prowess in thick rainforest terrain.</li>
           <li><strong>The Crocodile (Waterway Predator):</strong> Supreme water swimming speeds and crushing jaw force near riverbanks.</li>
-          <li><strong>The Deer or Boar:</strong> Great for players who want to experience the brand-new <a href="../3-new-animals-deer-moose-boar/">herbivore and toughness mechanics</a>!</li>
+          <li><strong>The Deer or Boar:</strong> Great for players who want to experience the brand-new <a href="../news/3-new-animals-deer-moose-boar/">herbivore and toughness mechanics</a>!</li>
         </ul>
       </div>
 
       <h2>3. Progression and Unlocking Abilities</h2>
-      <p>As you defeat prey, complete daily wilderness missions, and defend your territory, your creature earns Experience Points (XP). Leveling up enhances your base health, increases strike damage, and unlocks the game-changing <a href="../special-powers-and-skins-guide/">Special Powers (Fire Attack, Shield, and Speed Boost)</a>.</p>
+      <p>As you defeat prey, complete daily wilderness missions, and defend your territory, your creature earns Experience Points (XP). Leveling up enhances your base health, increases strike damage, and unlocks the game-changing <a href="../news/special-powers-and-skins-guide/">Special Powers (Fire Attack, Shield, and Speed Boost)</a>.</p>
 
       <div class="article-cta-box">
         <h3>Your Wilderness Adventure Begins Now</h3>
@@ -408,13 +440,13 @@
       </div>
 
       <h2>Have Ideas for Future Updates?</h2>
-      <p>The Gameyard development team actively reviews community suggestions. If you have a feature or animal you want to see, head over to the <a href="../../suggestions.html">Suggestions Page</a> and let us know!</p>
+      <p>The Gameyard development team actively reviews community suggestions. If you have a feature or animal you want to see, head over to the <a href="../suggestions.html">Suggestions Page</a> and let us know!</p>
     
   </article>
 
   <div class="article-footer-nav">
-   <a href="../../news/">← Back to News & Updates</a>
-   <a href="../../suggestions.html">Submit Your Suggestions →</a>
+   <a href="../news/">← Back to News & Updates</a>
+   <a href="../suggestions.html">Submit Your Suggestions →</a>
   </div>
  </main>
 

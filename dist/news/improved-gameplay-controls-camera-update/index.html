@@ -22,7 +22,7 @@
  <meta name="twitter:image" content="https://www.wildanimalsurvivalsim3d.com/assets/news/improved-gameplay-controls.jpg">
 
  <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="../../styles.css?v=4">
+ <link rel="stylesheet" href="../../styles.css?v=5">
 
  <!-- Structured Data: NewsArticle & VideoGame Schema -->
  <script type="application/ld+json">
@@ -182,6 +182,26 @@
     margin-bottom: 36px;
     display: block;
     object-fit: cover;
+  }
+  .article-figure {
+    margin: 36px 0;
+    text-align: center;
+  }
+  .article-inbody-image {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    display: block;
+    object-fit: cover;
+  }
+  .article-figure figcaption {
+    font-family: var(--tech, monospace);
+    font-size: 12px;
+    color: #A0A0AC;
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .article-body {
     font-size: 17px;
@@ -378,14 +398,26 @@
 
       <h2>Major Camera Overhaul: Stability in the Thick of Battle</h2>
       <p>Fast-paced animal combat often involves rapid pivoting, lunges, and vertical leaps. Previous camera architectures could occasionally clip through dense foliage or hitch when tracking rapid maneuvers. The new dynamic camera in <strong>Wild Animal Survival Sim 3D</strong> fixes this completely:</p>
+
+      <figure class="article-figure">
+        <img class="article-inbody-image" src="../../assets/game-3.webp" alt="Cinematic 3D Camera Tracking in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
+        <figcaption>Cinematic 60 FPS Camera Following in Dense Wilderness Environments</figcaption>
+      </figure>
+
       <ul>
         <li><strong>Smart Collision Prediction:</strong> The 3D camera now uses raycast smoothing to anticipate terrain obstructions, keeping your beast centered and in clear focus at all times.</li>
-        <li><strong>Dynamic Zoom on Combat:</strong> When engaging large boss beasts or defending against multiple intruders at your <a href="../new-den-system-defense-guide/">home den</a>, the camera automatically pulls back slightly to provide enhanced battlefield awareness.</li>
+        <li><strong>Dynamic Zoom on Combat:</strong> When engaging large boss beasts or defending against multiple intruders at your <a href="../../news/new-den-system-defense-guide/">home den</a>, the camera automatically pulls back slightly to provide enhanced battlefield awareness.</li>
         <li><strong>Adjustable Sensitivity Sliders:</strong> Customize pitch, yaw, and tracking damping to your exact personal preferences in the Settings panel.</li>
       </ul>
 
       <h2>Enhanced Touch Responsiveness & UI Precision</h2>
       <p>Survival encounters demand instant reactions. We revamped the virtual analog joystick and combat buttons:</p>
+
+      <figure class="article-figure">
+        <img class="article-inbody-image" src="../../assets/news/special-powers-and-skins.jpg" alt="Responsive Combat Action in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
+        <figcaption>Zero Input Latency for Split-Second Combat Power Activations</figcaption>
+      </figure>
+
       <div class="feature-highlight-box">
         <h3>What Feels Better in Version 2.0:</h3>
         <ul>
