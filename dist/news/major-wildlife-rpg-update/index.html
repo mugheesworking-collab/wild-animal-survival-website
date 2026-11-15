@@ -21,8 +21,8 @@
  <meta name="twitter:description" content="The Major Wildlife RPG Update for Wild Animal Survival Sim 3D is live! Explore 3 new animals, family system, den defense, and play free on Google Play Store.">
  <meta name="twitter:image" content="https://www.wildanimalsurvivalsim3d.com/assets/news/major-wildlife-rpg-update.jpg">
 
- <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="../../styles.css?v=6">
+ <meta name="theme-color" content="#07070A">
+ <link rel="stylesheet" href="/styles.css?v=8">
 
  <!-- Structured Data: NewsArticle & VideoGame Schema -->
  <script type="application/ld+json">
@@ -107,17 +107,47 @@
     display: flex;
     flex-direction: column;
   }
+
+  /* Fixed Persistent Header */
+  .header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1380px, calc(100% - 36px));
+    height: 56px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(10, 10, 14, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  .header-scrolled {
+    background: rgba(6, 6, 9, 0.98);
+    border-color: rgba(242, 180, 0, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95);
+  }
+
+  /* Hero Section */
   .article-hero {
     position: relative;
     padding: 130px 24px 30px;
     background: 
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242, 180, 0, 0.15) 0%, transparent 75%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242, 180, 0, 0.16) 0%, transparent 75%),
       linear-gradient(180deg, #050508 0%, #0d0d14 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
   }
   .article-hero-inner {
-    max-width: 980px;
+    max-width: 960px;
     margin: 0 auto;
   }
   .article-breadcrumbs {
@@ -143,7 +173,6 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 16px;
-    flex-wrap: wrap;
   }
   .article-tag {
     display: inline-block;
@@ -206,28 +235,34 @@
     color: #555562;
   }
   
-  /* Hero Showcase Featured Image: Full size, wide frame, NEVER cropped */
-  .article-featured-showcase {
-    max-width: 1140px;
+  /* Full-Size Showcase Featured Frame: 100% visible, never cut off */
+  .article-banner-wrap {
+    max-width: 1180px;
     width: 100%;
     margin: 36px auto 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .article-banner-frame {
+    width: 100%;
     border-radius: 8px;
     overflow: hidden;
     border: 2px solid rgba(242, 180, 0, 0.5);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(242, 180, 0, 0.2);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(242, 180, 0, 0.2);
     background: #000000;
   }
-  .article-featured-image {
+  .article-featured-img {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     display: block;
-    object-fit: contain; /* Full graphic display, 0 cut off */
+    object-fit: contain; /* Absolutely zero cutoff */
     background: #000000;
   }
 
+  /* Article Content */
   .article-main {
-    max-width: 900px;
+    max-width: 880px;
     width: 100%;
     margin: 0 auto;
     padding: 50px 24px 80px;
@@ -271,44 +306,6 @@
     color: #FFFFFF;
     font-family: var(--tech, monospace);
     letter-spacing: 0.05em;
-  }
-
-  /* In-body Figures */
-  .article-figure {
-    margin: 44px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: #000000;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-  }
-  .article-inbody-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    display: block;
-    object-fit: contain; /* Full size, never cut off */
-    background: #000000;
-  }
-  .article-figure figcaption {
-    font-family: var(--tech, monospace);
-    font-size: 13px;
-    font-weight: 700;
-    color: #F2B400;
-    padding: 14px 20px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: #111116;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .article-figure figcaption::before {
-    content: '▶';
-    color: #F2B400;
-    font-size: 10px;
   }
 
   .article-body {
@@ -438,13 +435,47 @@
   .article-footer-nav a:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 900px) {
+    .header nav {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 14, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      flex-direction: column;
+      padding: 16px 20px;
+      gap: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95);
+    }
+    .header nav.open { display: flex; }
+    .header nav a {
+      font-size: 16px;
+      width: 100%;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+
   @media (max-width: 768px) {
+    .header {
+      top: 8px;
+      width: calc(100% - 16px);
+      height: 50px;
+      padding: 0 10px;
+      gap: 8px;
+    }
     .article-hero {
       padding: 100px 16px 24px;
     }
-    .article-featured-showcase {
-      margin: 24px auto 0;
-      border-radius: 4px;
+    .article-banner-wrap {
+      margin: 20px auto 0;
+      padding: 0 8px;
     }
     .article-main {
       padding: 30px 16px 60px;
@@ -459,26 +490,30 @@
  </style>
 </head>
 <body class="article-page">
- <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+ <header class="header" id="header">
   <div class="header-left">
-   <a class="brand" href="../../index.html#home" aria-label="Back to home">
+   <button type="button" class="menu-button" aria-expanded="false" aria-controls="navigation" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+   <a class="brand" href="/" aria-label="Wild Animal Survival Sim 3D home">
     <span class="brand-studio">GAMEYARD</span>
     <span class="brand-divider">|</span>
     <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
    </a>
   </div>
   <nav id="navigation" aria-label="Main navigation">
-   <a href="../../index.html#modes">THE GAME</a>
-   <a href="../../index.html#worlds">WORLDS</a>
-   <a href="../../index.html#animals">ROSTER</a>
-   <a href="../../news/">NEWS</a>
+   <a href="/#modes">THE GAME</a>
+   <a href="/#worlds">WORLDS</a>
+   <a href="/#animals">ROSTER</a>
+   <a href="/#media">MEDIA</a>
+   <a href="/news/">NEWS</a>
   </nav>
   <div class="header-right">
    <a class="header-play-link" data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" aria-label="Play on Google Play">
     <span>▶</span>
     <span>PLAY NOW</span>
    </a>
-   <a class="header-cta" href="../../suggestions.html" aria-label="Give Suggestions">
+   <a class="header-cta" href="/suggestions" aria-label="Give us suggestions">
     <span>GIVE SUGGESTIONS</span>
    </a>
   </div>
@@ -487,7 +522,7 @@
  <section class="article-hero">
   <div class="article-hero-inner">
    <div class="article-breadcrumbs">
-    <a href="../../index.html">Home</a> &gt; <a href="../../news/">News & Updates</a> &gt; <span>MAJOR UPDATE</span>
+    <a href="/">Home</a> &gt; <a href="/news/">News & Updates</a> &gt; <span>MAJOR UPDATE</span>
    </div>
    <div class="article-badges">
     <span class="article-tag">MAJOR UPDATE</span>
@@ -504,8 +539,10 @@
   </div>
 
   <!-- Full-Size Showcase Featured Frame (Never cropped) -->
-  <div class="article-featured-showcase">
-   <img class="article-featured-image" src="../../assets/news/major-wildlife-rpg-update.jpg" alt="Wild Animal Survival Sim 3D: Major Wildlife RPG Update Released - Wild Animal Survival Sim 3D" width="1920" height="1080" loading="eager">
+  <div class="article-banner-wrap">
+   <div class="article-banner-frame">
+    <img class="article-featured-img" src="/assets/news/major-wildlife-rpg-update.jpg" alt="Wild Animal Survival Sim 3D: Major Wildlife RPG Update Released - Wild Animal Survival Sim 3D" width="1024" height="576" loading="eager">
+   </div>
   </div>
  </section>
 
@@ -528,12 +565,7 @@
       </div>
 
       <h2>What's Inside the Major Wildlife RPG Update?</h2>
-      <p>Whether you roam the frozen tundra, stalk prey through the dense rainforest, or claim territory on the open savanna, this update reshapes how you experience <strong>Wild Animal Survival Sim 3D</strong>. Our development team has listened directly to player feedback, engineering nine core improvements that deepen survival roleplay, creature progression, and pack combat.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="../../assets/news/3-new-animals-deer-moose-boar.jpg" alt="3 New Playable Animals: Deer, Moose & Boar in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>3 New Playable Animals: The Swift Deer, Mighty Moose, and Fierce Wild Boar</figcaption>
-      </figure>
+      <p>Whether you roam the frozen tundra, stalk prey through the dense rainforest, or claim territory on the open savanna, this update reshapes how you experience <strong>Wild Animal Survival Sim 3D</strong>. Our development team has listened directly to player feedback, engineering core improvements that deepen survival roleplay, creature progression, and pack combat.</p>
 
       <div class="feature-highlight-box">
         <h3>Key Update Highlights:</h3>
@@ -550,21 +582,10 @@
 
       <h2>A Deeper Roleplaying Experience in Wild Animal Survival Sim 3D</h2>
       <p>Survival in <strong>Wild Animal Survival Sim 3D</strong> is no longer just about hunting down food—it is about establishing a dynasty. With the newly integrated <strong>Family System</strong>, solo survival gives way to strategic pack coordination. You can discover a compatible mate across dynamic biomes, build kinship through shared hunts, and raise your offspring from vulnerable cubs into formidable allies.</p>
-      
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="../../assets/news/new-family-system.jpg" alt="Family System and Den Defense in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>The New Family System: Find a Mate, Protect Your Cubs, and Defend the Home Den</figcaption>
-      </figure>
-
       <p>To support your growing family, the all-new <strong>Den System</strong> provides a sanctuary where your mate and young can rest and heal. But beware: rival predators will actively seek out your den. You must fortify your territory, monitor scents in the wind, and fight fiercely to protect your offspring from surprise ambushes.</p>
 
       <h2>Elemental Powers and Legendary Skins</h2>
       <p>Combat encounters in <strong>Wild Animal Survival Sim 3D</strong> now feature superhuman predatory powers. Players can unlock the devastating Fire Attack to burn through tough armor, summon a glowing Primal Shield to absorb lethal blow damage, and trigger instant Speed Boosts to outflank any opponent.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="../../assets/news/special-powers-and-skins.jpg" alt="Special Powers and Skins in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Unleash Fire Attacks, Defensive Shields, and Mythical Pelts in the Latest Update</figcaption>
-      </figure>
 
       <div class="article-cta-box">
         <h3>Ready to Lead Your Pack?</h3>
@@ -575,14 +596,14 @@
       </div>
 
       <h2>Explore New Worlds & Roster</h2>
-      <p>This major patch perfectly complements our diverse roster of apex beasts including the <a href="../../index.html#animals">Wolf, Tiger, Panther, Lion, Bear, and Crocodile</a>. Explore the lush foliage of the Jungle, conquer the vast Savanna, and patrol the dangerous Waterways in our <a href="../../index.html#worlds">expansive 3D wilderness worlds</a>.</p>
-      <p>Have ideas for upcoming features or want to see new animals added next? Submit your thoughts directly to our development team via the official <a href="../../suggestions.html">Wild Animal Survival Sim 3D Suggestions Portal</a>.</p>
+      <p>This major patch perfectly complements our diverse roster of apex beasts including the <a href="/#animals">Wolf, Tiger, Panther, Lion, Bear, and Crocodile</a>. Explore the lush foliage of the Jungle, conquer the vast Savanna, and patrol the dangerous Waterways in our <a href="/#worlds">expansive 3D wilderness worlds</a>.</p>
+      <p>Have ideas for upcoming features or want to see new animals added next? Submit your thoughts directly to our development team via the official <a href="/suggestions">Wild Animal Survival Sim 3D Suggestions Portal</a>.</p>
     
   </article>
 
   <div class="article-footer-nav">
-   <a href="../../news/">← Back to News & Updates</a>
-   <a href="../../suggestions.html">Submit Your Suggestions →</a>
+   <a href="/news/">← Back to News & Updates</a>
+   <a href="/suggestions">Submit Your Suggestions →</a>
   </div>
  </main>
 
@@ -594,5 +615,47 @@
    Official game available on <a href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" style="color:#F2B400;">Google Play Store</a>.
   </p>
  </footer>
+
+ <script>
+  // Mobile Menu Toggle & Header Scroll Handling
+  const menuBtn = document.querySelector('.menu-button');
+  const nav = document.getElementById('navigation');
+  const header = document.getElementById('header');
+
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !open);
+      menuBtn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      nav.classList.toggle('open', !open);
+    });
+
+    nav.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open menu');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Scroll Header Effect
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 40) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }
+  });
+ </script>
 </body>
 </html>

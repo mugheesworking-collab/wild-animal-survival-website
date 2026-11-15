@@ -8,29 +8,31 @@ const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
 const newsDir = path.join(distDir, 'news');
 
-if (!fs.existsSync(newsDir)) {
-  fs.mkdirSync(newsDir, { recursive: true });
+// Clean previous generated news subfolders
+if (fs.existsSync(newsDir)) {
+  fs.rmSync(newsDir, { recursive: true, force: true });
 }
+fs.mkdirSync(newsDir, { recursive: true });
 
 export const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game';
 export const SITE_URL = 'https://www.wildanimalsurvivalsim3d.com';
 
+// Exactly 7 Articles corresponding to the 7 client update images
 export const articles = [
   {
     slug: 'major-wildlife-rpg-update',
-    // ONLY THIS ONE IS LIVE RIGHT NOW
+    // Article 1: LIVE RIGHT NOW
     publishDate: '2026-11-16T00:00:00+05:00',
     displayDate: 'November 16, 2026',
     tag: 'MAJOR UPDATE',
-    eyebrow: 'OFFICIAL PATCH ANNOUNCEMENT',
     title: 'Wild Animal Survival Sim 3D: Major Wildlife RPG Update Released',
     metaTitle: 'Wild Animal Survival Sim 3D - Major Wildlife RPG Update',
     metaDescription: 'The Major Wildlife RPG Update for Wild Animal Survival Sim 3D is live! Explore 3 new animals, family system, den defense, and play free on Google Play Store.',
     focusKeywords: ['Wild Animal Survival Sim 3D update', 'Wild Animal Survival Sim 3D patch notes', 'wildlife RPG mobile update', 'wild animal simulator android'],
-    image: 'assets/news/major-wildlife-rpg-update.jpg',
+    image: '/assets/news/major-wildlife-rpg-update.jpg',
     excerpt: 'The biggest expansion in Wild Animal Survival Sim 3D history has arrived, featuring 3 brand-new playable animals, an immersive Family System, Den defense mechanics, animal growth stages, and multi-language support.',
     readTime: '6 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">The wilderness has evolved. We are thrilled to announce that the <strong>Major Wildlife RPG Update</strong> for <strong>Wild Animal Survival Sim 3D</strong> is officially live across all regions on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a>. This landmark release introduces revolutionary gameplay mechanics, expanding your animal survival journey into a living, breathing ecosystem.</p>
 
       <div class="intel-brief-card">
@@ -47,12 +49,7 @@ export const articles = [
       </div>
 
       <h2>What's Inside the Major Wildlife RPG Update?</h2>
-      <p>Whether you roam the frozen tundra, stalk prey through the dense rainforest, or claim territory on the open savanna, this update reshapes how you experience <strong>Wild Animal Survival Sim 3D</strong>. Our development team has listened directly to player feedback, engineering nine core improvements that deepen survival roleplay, creature progression, and pack combat.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/3-new-animals-deer-moose-boar.jpg" alt="3 New Playable Animals: Deer, Moose & Boar in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>3 New Playable Animals: The Swift Deer, Mighty Moose, and Fierce Wild Boar</figcaption>
-      </figure>
+      <p>Whether you roam the frozen tundra, stalk prey through the dense rainforest, or claim territory on the open savanna, this update reshapes how you experience <strong>Wild Animal Survival Sim 3D</strong>. Our development team has listened directly to player feedback, engineering core improvements that deepen survival roleplay, creature progression, and pack combat.</p>
 
       <div class="feature-highlight-box">
         <h3>Key Update Highlights:</h3>
@@ -69,21 +66,10 @@ export const articles = [
 
       <h2>A Deeper Roleplaying Experience in Wild Animal Survival Sim 3D</h2>
       <p>Survival in <strong>Wild Animal Survival Sim 3D</strong> is no longer just about hunting down food—it is about establishing a dynasty. With the newly integrated <strong>Family System</strong>, solo survival gives way to strategic pack coordination. You can discover a compatible mate across dynamic biomes, build kinship through shared hunts, and raise your offspring from vulnerable cubs into formidable allies.</p>
-      
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/new-family-system.jpg" alt="Family System and Den Defense in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>The New Family System: Find a Mate, Protect Your Cubs, and Defend the Home Den</figcaption>
-      </figure>
-
       <p>To support your growing family, the all-new <strong>Den System</strong> provides a sanctuary where your mate and young can rest and heal. But beware: rival predators will actively seek out your den. You must fortify your territory, monitor scents in the wind, and fight fiercely to protect your offspring from surprise ambushes.</p>
 
       <h2>Elemental Powers and Legendary Skins</h2>
       <p>Combat encounters in <strong>Wild Animal Survival Sim 3D</strong> now feature superhuman predatory powers. Players can unlock the devastating Fire Attack to burn through tough armor, summon a glowing Primal Shield to absorb lethal blow damage, and trigger instant Speed Boosts to outflank any opponent.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/special-powers-and-skins.jpg" alt="Special Powers and Skins in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Unleash Fire Attacks, Defensive Shields, and Mythical Pelts in the Latest Update</figcaption>
-      </figure>
 
       <div class="article-cta-box">
         <h3>Ready to Lead Your Pack?</h3>
@@ -94,8 +80,8 @@ export const articles = [
       </div>
 
       <h2>Explore New Worlds & Roster</h2>
-      <p>This major patch perfectly complements our diverse roster of apex beasts including the <a href="${r}index.html#animals">Wolf, Tiger, Panther, Lion, Bear, and Crocodile</a>. Explore the lush foliage of the Jungle, conquer the vast Savanna, and patrol the dangerous Waterways in our <a href="${r}index.html#worlds">expansive 3D wilderness worlds</a>.</p>
-      <p>Have ideas for upcoming features or want to see new animals added next? Submit your thoughts directly to our development team via the official <a href="${r}suggestions.html">Wild Animal Survival Sim 3D Suggestions Portal</a>.</p>
+      <p>This major patch perfectly complements our diverse roster of apex beasts including the <a href="/#animals">Wolf, Tiger, Panther, Lion, Bear, and Crocodile</a>. Explore the lush foliage of the Jungle, conquer the vast Savanna, and patrol the dangerous Waterways in our <a href="/#worlds">expansive 3D wilderness worlds</a>.</p>
+      <p>Have ideas for upcoming features or want to see new animals added next? Submit your thoughts directly to our development team via the official <a href="/suggestions">Wild Animal Survival Sim 3D Suggestions Portal</a>.</p>
     `
   },
   {
@@ -103,39 +89,26 @@ export const articles = [
     publishDate: '2026-11-17T13:00:00+05:00',
     displayDate: 'November 17, 2026',
     tag: 'NEW ANIMALS',
-    eyebrow: 'PLAYABLE ROSTER EXPANSION',
     title: 'Play as Deer, Moose & Boar in Wild Animal Survival Sim 3D',
     metaTitle: 'Play Deer, Moose & Boar in Wild Animal Survival Sim 3D',
     metaDescription: 'Unlock 3 new playable beasts in Wild Animal Survival Sim 3D! Master Deer, Moose, and Boar in open wilderness. Download free on the Google Play Store today.',
     focusKeywords: ['Wild Animal Survival Sim 3D new animals', 'play as deer moose boar', 'wildlife animal simulator 3D roster', 'herbivore survival simulator'],
-    image: 'assets/news/3-new-animals-deer-moose-boar.jpg',
+    image: '/assets/news/3-new-animals-deer-moose-boar.jpg',
     excerpt: 'Step away from traditional carnivores and experience wilderness survival through the eyes of the swift Deer, towering Moose, and ferocious Wild Boar in Wild Animal Survival Sim 3D.',
     readTime: '5 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Prepare for an entirely fresh survival dynamic! The latest update to <strong>Wild Animal Survival Sim 3D</strong> brings three extraordinary new playable animals to the roster: the agile <strong>Deer</strong>, the towering <strong>Moose</strong>, and the ferocious <strong>Wild Boar</strong>. Download the update now on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and test your survival instincts with unique abilities and playstyles.</p>
 
       <h2>1. The Swift Deer: Mastery of Agility and Stealth</h2>
-      <p>The Deer brings unprecedented agility to <strong>Wild Animal Survival Sim 3D</strong>. Blessed with supreme leaping heights and rapid sprint acceleration, the Deer excels at evading apex carnivores like the <a href="${r}index.html#animals">Wolf and Panther</a>.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-4.webp" alt="Stalking and Escaping Predators in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>High-Speed Evasion: Use Dense Foliage and Natural Obstacles to Outrun Hunters</figcaption>
-      </figure>
-
+      <p>The Deer brings unprecedented agility to <strong>Wild Animal Survival Sim 3D</strong>. Blessed with supreme leaping heights and rapid sprint acceleration, the Deer excels at evading apex carnivores like the <a href="/#animals">Wolf and Panther</a>.</p>
       <ul>
         <li><strong>Heightened Senses:</strong> Detect lurking predators through an expanded scent and auditory radar before they close in.</li>
         <li><strong>Stamina Burst:</strong> Outrun predators over long distances and navigate steep rocky ridges where larger carnivores struggle to follow.</li>
-        <li><strong>Foraging & Grazing:</strong> Rejuvenate health and stamina by locating rare herbs, wild berries, and fresh river banks across <a href="${r}index.html#worlds">Jungle and Savanna worlds</a>.</li>
+        <li><strong>Foraging & Grazing:</strong> Rejuvenate health and stamina by locating rare herbs, wild berries, and fresh river banks across <a href="/#worlds">Jungle and Savanna worlds</a>.</li>
       </ul>
 
       <h2>2. The Mighty Moose: Forest Titan with Crushing Antlers</h2>
       <p>Do not mistake the Moose for passive prey. In <strong>Wild Animal Survival Sim 3D</strong>, the Moose represents one of the most physically imposing creatures in the wilderness. Featuring massive antler armaments and a thick winter coat, the Moose can go toe-to-toe with even the strongest grizzly bears and wolf packs.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/animal-growth-stages.jpg" alt="Moose and Beast Growth Stages in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Grow Your Moose from Juvenile Calf to Towering Prime Forest Titan</figcaption>
-      </figure>
-
       <ul>
         <li><strong>Antler Ram Attack:</strong> Deliver high-impact kinetic headbutts that stun charging predators and knock down pursuing foes.</li>
         <li><strong>Waterway Superiority:</strong> Swim through deep rivers and marshlands faster than land predators, utilizing water bodies as tactical escape routes.</li>
@@ -154,8 +127,8 @@ export const articles = [
       </div>
 
       <h2>How to Unlock and Play the New Animals</h2>
-      <p>All three animals can be selected directly from the main animal selection menu after updating your game client. Each new creature features full progression support—allowing you to evolve them from young juveniles into majestic prime specimens using the new Animal Growth System.</p>
-      <p>Share your favorite new creature or tell us which animal we should add next by visiting our <a href="${r}suggestions.html">Gameyard Suggestions Page</a>!</p>
+      <p>All three animals can be selected directly from the main animal selection menu after updating your game client. Each new creature features full progression support—allowing you to evolve them from young juveniles into majestic prime specimens.</p>
+      <p>Share your favorite new creature or tell us which animal we should add next by visiting our <a href="/suggestions">Gameyard Suggestions Page</a>!</p>
     `
   },
   {
@@ -163,15 +136,14 @@ export const articles = [
     publishDate: '2026-11-18T13:00:00+05:00',
     displayDate: 'November 18, 2026',
     tag: 'FAMILY SYSTEM',
-    eyebrow: 'RPG DYNASTY GUIDE',
     title: 'Family System Guide for Wild Animal Survival Sim 3D: Mates & Cubs',
     metaTitle: 'Family System Guide for Wild Animal Survival Sim 3D',
     metaDescription: 'Find a mate, raise babies, and protect your pack with the new Family System in Wild Animal Survival Sim 3D. Download free and build your dynasty on Android!',
     focusKeywords: ['Wild Animal Survival Sim 3D family system', 'raise cubs wild animal simulator', 'animal pack dynasty mobile RPG', 'mate and cubs animal sim'],
-    image: 'assets/news/new-family-system.jpg',
+    image: '/assets/news/new-family-system.jpg',
     excerpt: 'Survival is sweeter with a pack by your side. Discover how to locate a mate, raise healthy cubs, and protect your family in Wild Animal Survival Sim 3D.',
     readTime: '6 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Solitary wandering is a thing of the past. The newly launched <strong>Family System</strong> in <strong>Wild Animal Survival Sim 3D</strong> transforms the core survival experience into an emotional RPG dynasty. Available now on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a>, this comprehensive guide teaches you how to find a mate, nurture your cubs, and establish an unstoppable animal pack.</p>
 
       <h2>Step 1: Finding and Courting Your Mate</h2>
@@ -181,11 +153,6 @@ export const articles = [
         <li><strong>Courting Rituals:</strong> Offer fresh prey meat or assist potential mates in driving away hostile predators to build trust and affinity.</li>
         <li><strong>Pack Bond:</strong> Once bonded, your mate will travel alongside you, assist in coordinated takedowns, and share defensive duties at your home den.</li>
       </ul>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/hunt-and-feed-family.jpg" alt="Hunting and Feeding Pack Family in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Bring Carcasses Back to Your Sanctuary to Feed Your Growing Cubs</figcaption>
-      </figure>
 
       <h2>Step 2: Welcoming Your Cubs into the Wilderness</h2>
       <p>With a secured den and an established mate, your family can welcome new cubs. In <strong>Wild Animal Survival Sim 3D</strong>, young cubs are initially delicate and rely entirely on parental care for nourishment and warmth.</p>
@@ -197,11 +164,6 @@ export const articles = [
           <li><strong>Mentorship & Training:</strong> As your cubs grow, take them out on safe practice hunts to earn early survival experience.</li>
         </ol>
       </div>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/new-den-system.jpg" alt="Securing the Family Den in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>The Den Serves as Your Pack's Fortress and Nursery</figcaption>
-      </figure>
 
       <h2>Step 3: Defending Your Bloodline</h2>
       <p>Enemy predators will respond dynamically to your pack's growth. In <strong>Wild Animal Survival Sim 3D</strong>, hostile rivals will aggressively patrol borders near your territory. Coordinate defensive formations with your mate: let your mate draw aggro while you flank the enemy from behind with devastating critical bites.</p>
@@ -216,83 +178,38 @@ export const articles = [
     `
   },
   {
-    slug: 'hunt-and-feed-family-guide',
+    slug: 'new-den-system-defense-guide',
     publishDate: '2026-11-19T13:00:00+05:00',
     displayDate: 'November 19, 2026',
-    tag: 'HUNT & FEED',
-    eyebrow: 'SURVIVAL MECHANICS MASTERY',
-    title: 'Hunt & Feed Your Pack in Wild Animal Survival Sim 3D: Survival Guide',
-    metaTitle: 'Hunt & Feed Your Pack in Wild Animal Survival Sim 3D',
-    metaDescription: 'Learn how to hunt prey and feed your cubs in Wild Animal Survival Sim 3D. Master hunger survival tactics and grow your pack on Google Play Store today.',
-    focusKeywords: ['Wild Animal Survival Sim 3D hunt and feed', 'survival hunting simulator guide', 'feed wolf cubs android game', 'pack hunting tactics 3D'],
-    image: 'assets/news/hunt-and-feed-family.jpg',
-    excerpt: 'Mastering the hunt is essential for pack survival. Discover optimal stalking techniques, carcass transport, and pack feeding strategies in Wild Animal Survival Sim 3D.',
-    readTime: '5 min read',
-    getContent: (r) => `
-      <p class="lead">An apex predator's duty never ends. In <strong>Wild Animal Survival Sim 3D</strong>, hunting is not simply about sustaining your own health—it is the lifeblood of your growing pack. Get the latest update on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and discover how to master prey tracking, coordinated ambushes, and nutritious carcass retrieval.</p>
-
-      <h2>Understanding Prey Types and Difficulty Tiers</h2>
-      <p>Different biomes in <strong>Wild Animal Survival Sim 3D</strong> host a diverse ecosystem of prey animals. Knowing which targets to pursue based on your current pack strength prevents costly injuries.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-2.webp" alt="Pack Hunting and Animal Selection in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>Coordinate Pack Ambushes Across Diverse Open Wilderness Biomes</figcaption>
-      </figure>
-
-      <h2>The Art of the Stealth Ambush</h2>
-      <p>Rushing recklessly into a herd of prey will scatter them instantly. Follow these field-tested tactics in <strong>Wild Animal Survival Sim 3D</strong> to guarantee successful kills:</p>
-      <div class="feature-highlight-box">
-        <h3>Mastering the Stalking Stance:</h3>
-        <p>1. <strong>Crouch & Approach Downwind:</strong> Toggle low-profile movement through tall grasslands. Approach from downwind so prey cannot catch your scent.</p>
-        <p>2. <strong>Identify the Weakest Target:</strong> Lock on to juvenile or wounded prey animals on the fringes of the herd.</p>
-        <p>3. <strong>Sprint Strike:</strong> Close the remaining distance with a burst of sprint energy and execute a pounce strike to pin your prey before it gathers speed.</p>
-      </div>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/animal-growth-stages.jpg" alt="Feeding Offspring Promotes Growth in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Consistent Nutrition Directly Drives Cub Evolution into Battle-Ready Adults</figcaption>
-      </figure>
-
-      <div class="article-cta-box">
-        <h3>Become the Ultimate Hunter Today</h3>
-        <p>Feed your family, hone your predatory instincts, and conquer the wild in <strong>Wild Animal Survival Sim 3D</strong>. Download free on Google Play!</p>
-        <a class="article-cta-btn" href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">
-          <span>▶</span> HUNT NOW ON GOOGLE PLAY
-        </a>
-      </div>
-    `
-  },
-  {
-    slug: 'new-den-system-defense-guide',
-    publishDate: '2026-11-20T13:00:00+05:00',
-    displayDate: 'November 20, 2026',
     tag: 'DEN SYSTEM',
-    eyebrow: 'TERRITORY & BASE DEFENSE',
     title: 'New Den System Guide: Defend Your Home in Wild Animal Survival Sim 3D',
     metaTitle: 'New Den System Guide for Wild Animal Survival Sim 3D',
     metaDescription: 'Discover, fortify, and defend your home den in Wild Animal Survival Sim 3D. Learn top den defense strategies and protect your cubs on Google Play Store now.',
     focusKeywords: ['Wild Animal Survival Sim 3D den system', 'defend animal den simulator', 'wildlife home territory defense', 'den upgrade animal RPG'],
-    image: 'assets/news/new-den-system.jpg',
+    image: '/assets/news/new-den-system.jpg',
     excerpt: 'Your den is your fortress. Discover how to locate ideal den sites, fortify your sanctuary, and repel predator sieges in Wild Animal Survival Sim 3D.',
     readTime: '6 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Every wild beast needs a sacred sanctuary to rest, recuperate, and raise offspring away from the harsh elements. The all-new <strong>Den System</strong> in <strong>Wild Animal Survival Sim 3D</strong> introduces tactical home base mechanics to the open world. Grab the latest update on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and learn how to claim, upgrade, and defend your territory.</p>
 
       <h2>How to Discover and Claim a Den</h2>
-      <p>As you explore the three unique wilderness worlds in <strong>Wild Animal Survival Sim 3D</strong>, keep your eyes open for secluded rock caves, hollowed ancient trees, and sheltered river alcoves.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/new-family-system.jpg" alt="Shelter for Family Inside the Den in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Your Den Keeps Your Mate and Cubs Protected from Extreme Weather and Hostile Packs</figcaption>
-      </figure>
+      <p>As you explore the three unique wilderness worlds in <strong>Wild Animal Survival Sim 3D</strong>, keep your eyes open for secluded rock caves, hollowed ancient trees, and sheltered river alcoves. These landmark locations serve as prospective den foundations:</p>
+      <ul>
+        <li><strong>Clear Existing Occupants:</strong> Some prime den locations are occupied by rival predators or territorial bears. Defeat the occupants to claim the site.</li>
+        <li><strong>Scent-Mark Territory:</strong> Mark the perimeter of the cave entrance to establish your pack's scent barrier, warning lower-tier carnivores to stay away.</li>
+        <li><strong>Rest & Health Recovery:</strong> Sleeping inside your den provides accelerated health and energy regeneration rates compared to resting in open fields.</li>
+      </ul>
 
       <h2>Defending Against Den Invasions</h2>
-      <p>A thriving den attracts attention. In <strong>Wild Animal Survival Sim 3D</strong>, hostile predator patrols will periodically stage attacks against your sanctuary.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/special-powers-and-skins.jpg" alt="Using Special Powers During Den Defense in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Activate Shields and Fire Claws to Repel Sudden Territory Raids</figcaption>
-      </figure>
+      <p>A thriving den attracts attention. In <strong>Wild Animal Survival Sim 3D</strong>, hostile predator patrols—including rogue wolves, hyena scavengers, and opportunistic big cats—will periodically stage attacks against your sanctuary, particularly when your mate is nursing young cubs.</p>
+      <div class="feature-highlight-box">
+        <h3>Proven Den Defense Strategies:</h3>
+        <ul>
+          <li><strong>Funnel Enemies at the Chokepoint:</strong> Do not let invading packs flank your den interior. Stand firm at the narrow entrance mouth, forcing enemies to engage one-by-one.</li>
+          <li><strong>Coordinate with Your Mate:</strong> Use command pings to have your mate guard the rear while you unleash your strongest combat abilities at the front lines.</li>
+          <li><strong>Deploy Special Powers:</strong> Activate your Shield and Fire Attack powers to break through hostile siege groups quickly.</li>
+        </ul>
+      </div>
 
       <div class="article-cta-box">
         <h3>Claim Your Fortress in the Wild</h3>
@@ -305,32 +222,39 @@ export const articles = [
   },
   {
     slug: 'animal-growth-stages-rpg-guide',
-    publishDate: '2026-11-21T13:00:00+05:00',
-    displayDate: 'November 21, 2026',
+    publishDate: '2026-11-20T13:00:00+05:00',
+    displayDate: 'November 20, 2026',
     tag: 'ANIMAL GROWTH',
-    eyebrow: 'RPG PROGRESSION SYSTEM',
     title: 'Animal Growth Guide: Hatchling to Prime in Wild Animal Survival Sim 3D',
     metaTitle: 'Animal Growth Stages in Wild Animal Survival Sim 3D',
     metaDescription: 'Evolve from Juvenile to Prime beast with Animal Growth in Wild Animal Survival Sim 3D. Level up stats and dominate the wild free on Google Play Store today.',
     focusKeywords: ['Wild Animal Survival Sim 3D animal growth', 'juvenile to prime evolution simulator', 'animal RPG level up guide', 'grow animal simulator 3D'],
-    image: 'assets/news/animal-growth-stages.jpg',
+    image: '/assets/news/animal-growth-stages.jpg',
     excerpt: 'Witness the miraculous transformation of your beast. Explore the complete animal growth stages from newborn Juvenile to hulking Prime titan in Wild Animal Survival Sim 3D.',
     readTime: '5 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Survival is about growth, adaptation, and eventual dominance. The new <strong>Animal Growth System</strong> in <strong>Wild Animal Survival Sim 3D</strong> introduces full visual and statistical RPG progression for your playable creatures. Download the update now on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and discover how to nurture your beast into a legendary Prime predator.</p>
 
       <h2>The Three Evolutionary Growth Stages</h2>
-      <p>Every animal in <strong>Wild Animal Survival Sim 3D</strong> progresses through three distinct life phases: Juvenile, Adolescent, and Prime.</p>
+      <p>Every animal in <strong>Wild Animal Survival Sim 3D</strong> progresses through three distinct life phases, each accompanied by realistic scale scaling, muscular definition, and amplified combat attributes:</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/char-wolf.webp" alt="Apex Wolf Stature and Growth in Wild Animal Survival Sim 3D" width="800" height="800" style="max-height:480px; object-fit:contain; background:#000;" loading="lazy">
-        <figcaption>Visual Muscular Definition and Scale Scale Up With Each Evolutionary Phase</figcaption>
-      </figure>
+      <div class="feature-highlight-box">
+        <h3>1. Juvenile Stage (Young & Vulnerable)</h3>
+        <p>As a juvenile, your creature is small, curious, and fast, but lacks physical durability. Focus on catching insects, small lizards, and rodents while sticking closely to parental protection inside your home den.</p>
+        
+        <h3>2. Adolescent Stage (The Rising Hunter)</h3>
+        <p>Upon reaching adolescence, your creature experiences a massive growth spurt. Muscles fill out, sprint speeds peak, and you can participate in medium-game hunts alongside your pack members.</p>
+        
+        <h3>3. Prime Stage (Apex Dominance)</h3>
+        <p>The pinnacle of biological evolution. In Prime status, your animal reaches maximum size, boasting impenetrable hide armor, crushing jaw force, and an expanded aura that intimidates nearby rivals.</p>
+      </div>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/3-new-animals-deer-moose-boar.jpg" alt="Growth Stages Across All Species in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Evolve Newly Added Creatures from Calves into Colossal Prime Titans</figcaption>
-      </figure>
+      <h2>How to Accelerate Your Growth in Wild Animal Survival Sim 3D</h2>
+      <ul>
+        <li><strong>Consistent High-Quality Nutrition:</strong> Feeding on fresh, nutritious prey provides substantial XP bonuses towards your next growth milestone.</li>
+        <li><strong>Territory Exploration:</strong> Discovering hidden landmarks, traversing uncharted biomes, and drinking from pristine mountain springs unlocks exploration experience.</li>
+        <li><strong>Surviving Predatory Encounters:</strong> Successfully defending against rival predator ambushes grants major survival resilience boosts.</li>
+      </ul>
 
       <div class="article-cta-box">
         <h3>Evolve into a Legendary Prime Beast</h3>
@@ -343,32 +267,35 @@ export const articles = [
   },
   {
     slug: 'special-powers-and-skins-guide',
-    publishDate: '2026-11-22T13:00:00+05:00',
-    displayDate: 'November 22, 2026',
+    publishDate: '2026-11-21T13:00:00+05:00',
+    displayDate: 'November 21, 2026',
     tag: 'POWERS & SKINS',
-    eyebrow: 'COMBAT & CUSTOMIZATION',
     title: 'Unlock Fire Attack, Shield & Speed Boost in Wild Animal Survival Sim 3D',
     metaTitle: 'Special Powers & Skins in Wild Animal Survival Sim 3D',
     metaDescription: 'Unleash Fire Attack, Shield, and Speed Boost in Wild Animal Survival Sim 3D! Unlock rare skins and dominate the predator wild on Google Play Store now.',
     focusKeywords: ['Wild Animal Survival Sim 3D powers and skins', 'fire attack shield speed boost animal simulator', 'wildlife simulator skins unlock', 'special abilities animal combat'],
-    image: 'assets/news/special-powers-and-skins.jpg',
+    image: '/assets/news/special-powers-and-skins.jpg',
     excerpt: 'Turn the tides of battle with supernatural animal abilities and strike fear into your rivals with stunning mythical skins in Wild Animal Survival Sim 3D.',
     readTime: '5 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Unleash the primal fury within! The latest combat update for <strong>Wild Animal Survival Sim 3D</strong> introduces game-changing <strong>Special Powers</strong> and an expansive catalog of <strong>Custom Skins</strong>. Download the update on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and dominate every wilderness confrontation with unmatched elemental force.</p>
 
       <h2>Mastering the 3 New Special Powers</h2>
-      <p>Engaging rival apex predators requires more than basic claw swipes. Equip and trigger these three dynamic combat powers in <strong>Wild Animal Survival Sim 3D</strong> to turn unwinnable fights into decisive victories.</p>
+      <p>Engaging rival apex predators requires more than basic claw swipes. Equip and trigger these three dynamic combat powers in <strong>Wild Animal Survival Sim 3D</strong> to turn unwinnable fights into decisive victories:</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-7.webp" alt="High Stakes Combat in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>Engage Apex Rivals with Devastating Elemental Powers and Agile Dodges</figcaption>
-      </figure>
+      <div class="feature-highlight-box">
+        <h3>🔥 1. Fire Attack (Blazing Claws & Bites)</h3>
+        <p>Ignite your physical strikes with scorching flame energy. Each successful hit deals immediate burst damage and leaves enemies suffering from ongoing burn status effects over 5 seconds. Perfect for melting high-health boss bears and massive crocodiles.</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/improved-gameplay-controls.jpg" alt="Smooth Controls and Power Activation in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Enhanced Touch Controls Ensure Instant Power Triggering and Zero Latency</figcaption>
-      </figure>
+        <h3>🛡️ 2. Primal Shield (Invulnerability Barrier)</h3>
+        <p>Project a hardened mystical forcefield around your beast. The shield absorbs up to 75% of incoming kinetic damage for 8 seconds, allowing you to survive lethal counter-strikes and break out of predatory pins during chaotic den defense sieges.</p>
+
+        <h3>⚡ 3. Speed Boost (Lightning Reflexes)</h3>
+        <p>Supercharge your muscular velocity. Activates a 50% sprint boost with zero stamina depletion for a short burst. Indispensable for chasing down swift prey or escaping an overwhelming pack of enemy carnivores.</p>
+      </div>
+
+      <h2>Unlocking Rare & Mythical Skins</h2>
+      <p>Transform the appearance of your <a href="/#animals">Wolf, Tiger, Panther, Lion, Bear, and Crocodile</a>. From bioluminescent phantom markings and volcanic ember pelts to frozen frost hides, skins in <strong>Wild Animal Survival Sim 3D</strong> reflect your status as the reigning supreme predator.</p>
 
       <div class="article-cta-box">
         <h3>Equip Special Powers & Stand Out</h3>
@@ -381,29 +308,27 @@ export const articles = [
   },
   {
     slug: 'multi-language-support-update',
-    publishDate: '2026-11-23T13:00:00+05:00',
-    displayDate: 'November 23, 2026',
+    publishDate: '2026-11-22T13:00:00+05:00',
+    displayDate: 'November 22, 2026',
     tag: 'LOCALIZATION',
-    eyebrow: 'GLOBAL ACCESSIBILITY',
     title: 'Wild Animal Survival Sim 3D Goes Global: Multi-Language Support',
     metaTitle: 'Multi-Language Support in Wild Animal Survival Sim 3D',
     metaDescription: 'Play Wild Animal Survival Sim 3D in 12+ languages! Experience global localization, improved UI, and hunt freely on Android via the Google Play Store today.',
     focusKeywords: ['Wild Animal Survival Sim 3D multi language', 'wildlife simulator global localization', 'play animal simulator in your language', 'multi language RPG android'],
-    image: 'assets/news/multi-language-support.jpg',
+    image: '/assets/news/multi-language-support.jpg',
     excerpt: 'Wild Animal Survival Sim 3D is now fully localized across 12+ international languages, welcoming millions of players worldwide to experience seamless wildlife RPG gaming.',
     readTime: '4 min read',
-    getContent: (r) => `
+    contentHtml: `
       <p class="lead">Gaming knows no borders. To celebrate our growing worldwide community of wild animal simulator enthusiasts, Gameyard has rolled out comprehensive <strong>Multi-Language Support</strong> in the newest release of <strong>Wild Animal Survival Sim 3D</strong>. Download the update on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and immerse yourself in the wild using your native language.</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/major-wildlife-rpg-update.jpg" alt="Major Wildlife RPG Update Banner in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>The Major Wildlife RPG Expansion is Localized for Over 12 Global Regions</figcaption>
-      </figure>
+      <h2>Supported Languages Across the World</h2>
+      <p>Our localized build includes fully translated user interfaces, quest objectives, survival tutorials, and RPG talent descriptions for over 12 major languages, including English, Spanish, Portuguese, French, German, Italian, Russian, Turkish, Arabic, Japanese, Korean, and Simplified Chinese.</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-6.webp" alt="Vast 3D Biomes in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>Enjoy Immersive Wilderness Exploration in Your Native Language</figcaption>
-      </figure>
+      <h2>How Language Switching Works</h2>
+      <p>In <strong>Wild Animal Survival Sim 3D</strong>, the game automatically detects your mobile device's default system language upon first launch and loads the matching localized text. You can also manually switch languages at any moment via the in-game Settings menu with instant, on-the-fly text reloading.</p>
+
+      <h2>Cleaner, Clearer HUD Across All Screen Sizes</h2>
+      <p>Alongside linguistic translation, our team redesigned typography kerning and button padding to guarantee that dialogue boxes, status bars, and quest indicators format impeccably across every mobile screen size—from compact smartphones to ultra-wide tablets.</p>
 
       <div class="article-cta-box">
         <h3>Play in Your Native Tongue</h3>
@@ -412,84 +337,17 @@ export const articles = [
           <span>▶</span> PLAY IN YOUR LANGUAGE ON GOOGLE PLAY
         </a>
       </div>
-    `
-  },
-  {
-    slug: 'improved-gameplay-controls-camera-update',
-    publishDate: '2026-11-24T13:00:00+05:00',
-    displayDate: 'November 24, 2026',
-    tag: 'PERFORMANCE',
-    eyebrow: 'ENGINE & QUALITY OF LIFE',
-    title: 'Enhanced Controls & 60FPS Camera Stability in Wild Animal Survival Sim 3D',
-    metaTitle: 'Smooth Controls & Camera in Wild Animal Survival Sim 3D',
-    metaDescription: 'Experience fluid camera tracking, crisp 60FPS UI, and tighter combat controls in Wild Animal Survival Sim 3D. Download the latest build on Google Play now.',
-    focusKeywords: ['Wild Animal Survival Sim 3D camera controls', 'smooth 60fps wildlife simulator', 'improved gameplay controls animal sim', 'stable camera mobile RPG'],
-    image: 'assets/news/improved-gameplay-controls.jpg',
-    excerpt: 'Say goodbye to jittery tracking and input latency. Discover how engine overhauls bring buttery smooth 60 FPS camera tracking and precise controls to Wild Animal Survival Sim 3D.',
-    readTime: '5 min read',
-    getContent: (r) => `
-      <p class="lead">Precision is the difference between catching your prey and going hungry. In our latest technical patch for <strong>Wild Animal Survival Sim 3D</strong>, our engineering team completely overhauled the physics engine, touch-response latency, and 3D camera stabilization. Update your game today on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> for the smoothest wildlife survival experience ever created on mobile.</p>
 
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-3.webp" alt="Cinematic 3D Camera Tracking in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>Cinematic 60 FPS Camera Following in Dense Wilderness Environments</figcaption>
-      </figure>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/special-powers-and-skins.jpg" alt="Responsive Combat Action in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Zero Input Latency for Split-Second Combat Power Activations</figcaption>
-      </figure>
-
-      <div class="article-cta-box">
-        <h3>Feel the Difference in Action</h3>
-        <p>Experience silky-smooth 60 FPS controls and cinematic camera movement in <strong>Wild Animal Survival Sim 3D</strong>. Download free on Android now!</p>
-        <a class="article-cta-btn" href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">
-          <span>▶</span> PLAY THE UPDATE ON GOOGLE PLAY
-        </a>
-      </div>
-    `
-  },
-  {
-    slug: 'complete-beginners-survival-guide',
-    publishDate: '2026-11-25T13:00:00+05:00',
-    displayDate: 'November 25, 2026',
-    tag: 'BEGINNER GUIDE',
-    eyebrow: 'MASTER THE WILDERNESS',
-    title: 'Master Beginner’s Survival Guide for Wild Animal Survival Sim 3D',
-    metaTitle: 'Beginner\'s Survival Guide to Wild Animal Survival Sim 3D',
-    metaDescription: 'Master survival, hunting, and territory control in Wild Animal Survival Sim 3D. Top tips for food, stamina, and leveling up free on Google Play Store.',
-    focusKeywords: ['Wild Animal Survival Sim 3D beginner guide', 'how to play Wild Animal Survival Sim 3D', 'wild animal survival sim tips and tricks', 'wildlife RPG starter guide'],
-    image: 'assets/explore-new-animals.jpg',
-    excerpt: 'New to the wilderness? This comprehensive survival manual gives you the essential tactics, biome maps, and combat secrets to conquer Wild Animal Survival Sim 3D from day one.',
-    readTime: '7 min read',
-    getContent: (r) => `
-      <p class="lead">Welcome to the untamed wilderness. Stepping into <strong>Wild Animal Survival Sim 3D</strong> for the first time is both exhilarating and dangerous. Whether you choose to roam as a stealthy wolf or a fearsome tiger, mastering the fundamentals of stamina management, hydration, territorial expansion, and pack dynamics is vital. Download the game free on the <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">Google Play Store</a> and follow this ultimate starter roadmap.</p>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/game-5.webp" alt="Managing Survival in the Open Savanna in Wild Animal Survival Sim 3D" width="1600" height="900" loading="lazy">
-        <figcaption>Balance Hunger, Thirst, and Energy as You Traverse Vast Wilderness Worlds</figcaption>
-      </figure>
-
-      <figure class="article-figure">
-        <img class="article-inbody-image" src="${r}assets/news/new-den-system.jpg" alt="Establish Your Den Sanctuary in Wild Animal Survival Sim 3D" width="1920" height="1080" loading="lazy">
-        <figcaption>Secure a Safe Den Base Early in Your Journey to Rest and Protect Cubs</figcaption>
-      </figure>
-
-      <div class="article-cta-box">
-        <h3>Your Wilderness Adventure Begins Now</h3>
-        <p>Step into the wild, conquer the food chain, and build your dynasty in <strong>Wild Animal Survival Sim 3D</strong>. Download free on Android today!</p>
-        <a class="article-cta-btn" href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">
-          <span>▶</span> START PLAYING FREE ON GOOGLE PLAY
-        </a>
-      </div>
+      <h2>Spot a Translation Improvement?</h2>
+      <p>We are committed to continuous localization refinement. If you notice any translation nuance that could be improved, please notify our team via the <a href="/suggestions">Player Feedback Form</a>!</p>
     `
   }
 ];
 
 // Helper to generate each article HTML page
-function generateArticlePage(art, relPathToRoot) {
+function generateArticlePage(art) {
   const fullArticleUrl = `${SITE_URL}/news/${art.slug}/`;
-  const fullImageUrl = `${SITE_URL}/${art.image}`;
+  const fullImageUrl = `${SITE_URL}${art.image}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -514,8 +372,8 @@ function generateArticlePage(art, relPathToRoot) {
  <meta name="twitter:description" content="${art.metaDescription}">
  <meta name="twitter:image" content="${fullImageUrl}">
 
- <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="${relPathToRoot}styles.css?v=6">
+ <meta name="theme-color" content="#07070A">
+ <link rel="stylesheet" href="/styles.css?v=8">
 
  <!-- Structured Data: NewsArticle & VideoGame Schema -->
  <script type="application/ld+json">
@@ -600,17 +458,47 @@ function generateArticlePage(art, relPathToRoot) {
     display: flex;
     flex-direction: column;
   }
+
+  /* Fixed Persistent Header */
+  .header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1380px, calc(100% - 36px));
+    height: 56px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(10, 10, 14, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  .header-scrolled {
+    background: rgba(6, 6, 9, 0.98);
+    border-color: rgba(242, 180, 0, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95);
+  }
+
+  /* Hero Section */
   .article-hero {
     position: relative;
     padding: 130px 24px 30px;
     background: 
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242, 180, 0, 0.15) 0%, transparent 75%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242, 180, 0, 0.16) 0%, transparent 75%),
       linear-gradient(180deg, #050508 0%, #0d0d14 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
   }
   .article-hero-inner {
-    max-width: 980px;
+    max-width: 960px;
     margin: 0 auto;
   }
   .article-breadcrumbs {
@@ -636,7 +524,6 @@ function generateArticlePage(art, relPathToRoot) {
     justify-content: center;
     gap: 10px;
     margin-bottom: 16px;
-    flex-wrap: wrap;
   }
   .article-tag {
     display: inline-block;
@@ -699,28 +586,34 @@ function generateArticlePage(art, relPathToRoot) {
     color: #555562;
   }
   
-  /* Hero Showcase Featured Image: Full size, wide frame, NEVER cropped */
-  .article-featured-showcase {
-    max-width: 1140px;
+  /* Full-Size Showcase Featured Frame: 100% visible, never cut off */
+  .article-banner-wrap {
+    max-width: 1180px;
     width: 100%;
     margin: 36px auto 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  .article-banner-frame {
+    width: 100%;
     border-radius: 8px;
     overflow: hidden;
     border: 2px solid rgba(242, 180, 0, 0.5);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 30px rgba(242, 180, 0, 0.2);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 35px rgba(242, 180, 0, 0.2);
     background: #000000;
   }
-  .article-featured-image {
+  .article-featured-img {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     display: block;
-    object-fit: contain; /* Full graphic display, 0 cut off */
+    object-fit: contain; /* Absolutely zero cutoff */
     background: #000000;
   }
 
+  /* Article Content */
   .article-main {
-    max-width: 900px;
+    max-width: 880px;
     width: 100%;
     margin: 0 auto;
     padding: 50px 24px 80px;
@@ -764,44 +657,6 @@ function generateArticlePage(art, relPathToRoot) {
     color: #FFFFFF;
     font-family: var(--tech, monospace);
     letter-spacing: 0.05em;
-  }
-
-  /* In-body Figures */
-  .article-figure {
-    margin: 44px 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: #000000;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-  }
-  .article-inbody-image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    display: block;
-    object-fit: contain; /* Full size, never cut off */
-    background: #000000;
-  }
-  .article-figure figcaption {
-    font-family: var(--tech, monospace);
-    font-size: 13px;
-    font-weight: 700;
-    color: #F2B400;
-    padding: 14px 20px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: #111116;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .article-figure figcaption::before {
-    content: '▶';
-    color: #F2B400;
-    font-size: 10px;
   }
 
   .article-body {
@@ -931,13 +786,47 @@ function generateArticlePage(art, relPathToRoot) {
   .article-footer-nav a:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 900px) {
+    .header nav {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 14, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      flex-direction: column;
+      padding: 16px 20px;
+      gap: 12px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.95);
+    }
+    .header nav.open { display: flex; }
+    .header nav a {
+      font-size: 16px;
+      width: 100%;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+
   @media (max-width: 768px) {
+    .header {
+      top: 8px;
+      width: calc(100% - 16px);
+      height: 50px;
+      padding: 0 10px;
+      gap: 8px;
+    }
     .article-hero {
       padding: 100px 16px 24px;
     }
-    .article-featured-showcase {
-      margin: 24px auto 0;
-      border-radius: 4px;
+    .article-banner-wrap {
+      margin: 20px auto 0;
+      padding: 0 8px;
     }
     .article-main {
       padding: 30px 16px 60px;
@@ -952,26 +841,30 @@ function generateArticlePage(art, relPathToRoot) {
  </style>
 </head>
 <body class="article-page">
- <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+ <header class="header" id="header">
   <div class="header-left">
-   <a class="brand" href="${relPathToRoot}index.html#home" aria-label="Back to home">
+   <button type="button" class="menu-button" aria-expanded="false" aria-controls="navigation" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+   <a class="brand" href="/" aria-label="Wild Animal Survival Sim 3D home">
     <span class="brand-studio">GAMEYARD</span>
     <span class="brand-divider">|</span>
     <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
    </a>
   </div>
   <nav id="navigation" aria-label="Main navigation">
-   <a href="${relPathToRoot}index.html#modes">THE GAME</a>
-   <a href="${relPathToRoot}index.html#worlds">WORLDS</a>
-   <a href="${relPathToRoot}index.html#animals">ROSTER</a>
-   <a href="${relPathToRoot}news/">NEWS</a>
+   <a href="/#modes">THE GAME</a>
+   <a href="/#worlds">WORLDS</a>
+   <a href="/#animals">ROSTER</a>
+   <a href="/#media">MEDIA</a>
+   <a href="/news/">NEWS</a>
   </nav>
   <div class="header-right">
    <a class="header-play-link" data-play href="${PLAY_URL}" target="_blank" rel="noopener noreferrer" aria-label="Play on Google Play">
     <span>▶</span>
     <span>PLAY NOW</span>
    </a>
-   <a class="header-cta" href="${relPathToRoot}suggestions.html" aria-label="Give Suggestions">
+   <a class="header-cta" href="/suggestions" aria-label="Give us suggestions">
     <span>GIVE SUGGESTIONS</span>
    </a>
   </div>
@@ -980,7 +873,7 @@ function generateArticlePage(art, relPathToRoot) {
  <section class="article-hero">
   <div class="article-hero-inner">
    <div class="article-breadcrumbs">
-    <a href="${relPathToRoot}index.html">Home</a> &gt; <a href="${relPathToRoot}news/">News & Updates</a> &gt; <span>${art.tag}</span>
+    <a href="/">Home</a> &gt; <a href="/news/">News & Updates</a> &gt; <span>${art.tag}</span>
    </div>
    <div class="article-badges">
     <span class="article-tag">${art.tag}</span>
@@ -997,19 +890,21 @@ function generateArticlePage(art, relPathToRoot) {
   </div>
 
   <!-- Full-Size Showcase Featured Frame (Never cropped) -->
-  <div class="article-featured-showcase">
-   <img class="article-featured-image" src="${relPathToRoot}${art.image}" alt="${art.title} - Wild Animal Survival Sim 3D" width="1920" height="1080" loading="eager">
+  <div class="article-banner-wrap">
+   <div class="article-banner-frame">
+    <img class="article-featured-img" src="${art.image}" alt="${art.title} - Wild Animal Survival Sim 3D" width="1024" height="576" loading="eager">
+   </div>
   </div>
  </section>
 
  <main class="article-main">
   <article class="article-body">
-   ${art.getContent(relPathToRoot)}
+   ${art.contentHtml}
   </article>
 
   <div class="article-footer-nav">
-   <a href="${relPathToRoot}news/">← Back to News & Updates</a>
-   <a href="${relPathToRoot}suggestions.html">Submit Your Suggestions →</a>
+   <a href="/news/">← Back to News & Updates</a>
+   <a href="/suggestions">Submit Your Suggestions →</a>
   </div>
  </main>
 
@@ -1021,13 +916,55 @@ function generateArticlePage(art, relPathToRoot) {
    Official game available on <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer" style="color:#F2B400;">Google Play Store</a>.
   </p>
  </footer>
+
+ <script>
+  // Mobile Menu Toggle & Header Scroll Handling
+  const menuBtn = document.querySelector('.menu-button');
+  const nav = document.getElementById('navigation');
+  const header = document.getElementById('header');
+
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !open);
+      menuBtn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      nav.classList.toggle('open', !open);
+    });
+
+    nav.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open menu');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Scroll Header Effect
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 40) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }
+  });
+ </script>
 </body>
 </html>`;
 }
 
-// Generate News Hub Page (dist/news/index.html and dist/news.html)
-// ONLY SHOWS ARTICLES WHOSE PUBLISH DATE HAS ARRIVED!
-function generateNewsHubPage(articlesList, relPathToRoot) {
+// Generate News Hub Page (dist/news/index.html)
+// ONLY SHOWS PUBLISHED ARTICLES
+function generateNewsHubPage(publishedList) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1039,14 +976,40 @@ function generateNewsHubPage(articlesList, relPathToRoot) {
  <meta property="og:title" content="News & Updates | Wild Animal Survival Sim 3D">
  <meta property="og:description" content="Explore patch notes, animal rosters, and survival guides for Wild Animal Survival Sim 3D.">
  <meta property="og:image" content="${SITE_URL}/assets/news/major-wildlife-rpg-update.jpg">
- <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="${relPathToRoot}styles.css?v=6">
+ <meta name="theme-color" content="#07070A">
+ <link rel="stylesheet" href="/styles.css?v=8">
  <style>
-  body { background:#08080C; color:#E2E2E8; font-family:var(--body, sans-serif); margin:0; }
+  body { background:#07070A; color:#E2E2E8; font-family:var(--body, sans-serif); margin:0; }
   .news-page { min-height:100vh; display:flex; flex-direction:column; }
+  
+  .header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1380px, calc(100% - 36px));
+    height: 56px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(10, 10, 14, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+  }
+  .header-scrolled {
+    background: rgba(6, 6, 9, 0.98);
+    border-color: rgba(242, 180, 0, 0.3);
+  }
+
   .news-hero {
     position:relative; padding:130px 24px 50px;
-    background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.12) 0%, transparent 70%), linear-gradient(180deg, #050508 0%, #0d0d12 100%);
+    background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.14) 0%, transparent 70%), linear-gradient(180deg, #050508 0%, #0d0d12 100%);
     border-bottom:1px solid rgba(255,255,255,0.08); text-align:center;
   }
   .news-hero-inner { max-width:820px; margin:0 auto; }
@@ -1075,7 +1038,18 @@ function generateNewsHubPage(articlesList, relPathToRoot) {
   .article-card-excerpt { font-size:14px; line-height:1.55; color:#A8A8B4; margin:0 0 18px; flex:1; }
   .article-card-footer { display:flex; justify-content:space-between; align-items:center; font-family:var(--tech, monospace); font-size:11px; color:#787884; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px; }
   .article-card-cta { color:#F2B400; font-weight:800; }
+
+  @media(max-width:900px){
+    .header nav {
+      display:none; position:absolute; top:calc(100% + 8px); left:0; right:0;
+      background:rgba(10,10,14,0.98); backdrop-filter:blur(16px);
+      flex-direction:column; padding:16px 20px; gap:12px;
+      border:1px solid rgba(255,255,255,0.12); border-radius:6px;
+    }
+    .header nav.open { display:flex; }
+  }
   @media(max-width:768px){
+    .header { top:8px; width:calc(100% - 16px); height:50px; padding:0 10px; }
     .news-hero { padding:100px 16px 36px; }
     .news-main { padding:30px 16px 60px; }
     .articles-grid { grid-template-columns:1fr; }
@@ -1083,26 +1057,30 @@ function generateNewsHubPage(articlesList, relPathToRoot) {
  </style>
 </head>
 <body class="news-page">
- <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+ <header class="header" id="header">
   <div class="header-left">
-   <a class="brand" href="${relPathToRoot}index.html#home" aria-label="Back to home">
+   <button type="button" class="menu-button" aria-expanded="false" aria-controls="navigation" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+   <a class="brand" href="/" aria-label="Wild Animal Survival Sim 3D home">
     <span class="brand-studio">GAMEYARD</span>
     <span class="brand-divider">|</span>
     <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
    </a>
   </div>
   <nav id="navigation" aria-label="Main navigation">
-   <a href="${relPathToRoot}index.html#modes">THE GAME</a>
-   <a href="${relPathToRoot}index.html#worlds">WORLDS</a>
-   <a href="${relPathToRoot}index.html#animals">ROSTER</a>
-   <a href="${relPathToRoot}news/">NEWS</a>
+   <a href="/#modes">THE GAME</a>
+   <a href="/#worlds">WORLDS</a>
+   <a href="/#animals">ROSTER</a>
+   <a href="/#media">MEDIA</a>
+   <a href="/news/">NEWS</a>
   </nav>
   <div class="header-right">
    <a class="header-play-link" data-play href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">
     <span>▶</span>
     <span>PLAY NOW</span>
    </a>
-   <a class="header-cta" href="${relPathToRoot}suggestions.html">
+   <a class="header-cta" href="/suggestions">
     <span>GIVE SUGGESTIONS</span>
    </a>
   </div>
@@ -1120,10 +1098,10 @@ function generateNewsHubPage(articlesList, relPathToRoot) {
 
  <main class="news-main">
   <div class="articles-grid">
-   ${articlesList.map(a => `
-     <a class="article-card" href="${relPathToRoot === '../' ? a.slug + '/' : 'news/' + a.slug + '/'}">
+   ${publishedList.map(a => `
+     <a class="article-card" href="/news/${a.slug}/">
       <div class="article-card-img-wrap">
-       <img src="${relPathToRoot}${a.image}" alt="${a.title}" width="600" height="338" loading="lazy">
+       <img src="${a.image}" alt="${a.title}" width="600" height="338" loading="lazy">
       </div>
       <div class="article-card-body">
        <div class="article-card-tag">${a.tag}</div>
@@ -1147,6 +1125,25 @@ function generateNewsHubPage(articlesList, relPathToRoot) {
    Official game available on <a href="${PLAY_URL}" target="_blank" rel="noopener noreferrer" style="color:#F2B400;">Google Play Store</a>.
   </p>
  </footer>
+
+ <script>
+  const menuBtn = document.querySelector('.menu-button');
+  const nav = document.getElementById('navigation');
+  const header = document.getElementById('header');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !open);
+      nav.classList.toggle('open', !open);
+    });
+  }
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 40) header.classList.add('header-scrolled');
+      else header.classList.remove('header-scrolled');
+    }
+  });
+ </script>
 </body>
 </html>`;
 }
@@ -1160,7 +1157,7 @@ function generateSitemap(publishedList) {
   // Main pages
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/news/</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
-  xml += `  <url>\n    <loc>${SITE_URL}/suggestions.html</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+  xml += `  <url>\n    <loc>${SITE_URL}/suggestions</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
 
   // ONLY Article pages that have been published
   publishedList.forEach(art => {
@@ -1186,25 +1183,19 @@ const now = new Date();
 const publishedArticles = articles.filter(a => new Date(a.publishDate) <= now);
 console.log(`Currently published articles: ${publishedArticles.length} of ${articles.length}`);
 
-// 1. Generate individual article directories and HTML files
+// 1. Generate individual article directories with clean index.html (so /news/<slug>/ works as a clean URL!)
 articles.forEach(art => {
   const artDir = path.join(newsDir, art.slug);
   if (!fs.existsSync(artDir)) {
     fs.mkdirSync(artDir, { recursive: true });
   }
-  const htmlDir = generateArticlePage(art, '../../');
-  fs.writeFileSync(path.join(artDir, 'index.html'), htmlDir, 'utf8');
-
-  const htmlFlat = generateArticlePage(art, '../');
-  fs.writeFileSync(path.join(newsDir, `${art.slug}.html`), htmlFlat, 'utf8');
+  const html = generateArticlePage(art);
+  fs.writeFileSync(path.join(artDir, 'index.html'), html, 'utf8');
 });
 
-// 2. Generate News Archive Hub (ONLY showing published articles!)
-const newsHubDirHtml = generateNewsHubPage(publishedArticles, '../');
-fs.writeFileSync(path.join(newsDir, 'index.html'), newsHubDirHtml, 'utf8');
-
-const newsHubRootHtml = generateNewsHubPage(publishedArticles, '');
-fs.writeFileSync(path.join(distDir, 'news.html'), newsHubRootHtml, 'utf8');
+// 2. Generate News Hub Page (dist/news/index.html)
+const newsHubHtml = generateNewsHubPage(publishedArticles);
+fs.writeFileSync(path.join(newsDir, 'index.html'), newsHubHtml, 'utf8');
 console.log(`✔ Generated: dist/news/index.html with ${publishedArticles.length} published article(s)`);
 
 // 3. Generate Sitemap XML (ONLY including published articles!)

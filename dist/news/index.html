@@ -9,14 +9,40 @@
  <meta property="og:title" content="News & Updates | Wild Animal Survival Sim 3D">
  <meta property="og:description" content="Explore patch notes, animal rosters, and survival guides for Wild Animal Survival Sim 3D.">
  <meta property="og:image" content="https://www.wildanimalsurvivalsim3d.com/assets/news/major-wildlife-rpg-update.jpg">
- <meta name="theme-color" content="#08080C">
- <link rel="stylesheet" href="../styles.css?v=6">
+ <meta name="theme-color" content="#07070A">
+ <link rel="stylesheet" href="/styles.css?v=8">
  <style>
-  body { background:#08080C; color:#E2E2E8; font-family:var(--body, sans-serif); margin:0; }
+  body { background:#07070A; color:#E2E2E8; font-family:var(--body, sans-serif); margin:0; }
   .news-page { min-height:100vh; display:flex; flex-direction:column; }
+  
+  .header {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1380px, calc(100% - 36px));
+    height: 56px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(10, 10, 14, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-sizing: border-box;
+  }
+  .header-scrolled {
+    background: rgba(6, 6, 9, 0.98);
+    border-color: rgba(242, 180, 0, 0.3);
+  }
+
   .news-hero {
     position:relative; padding:130px 24px 50px;
-    background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.12) 0%, transparent 70%), linear-gradient(180deg, #050508 0%, #0d0d12 100%);
+    background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(242, 180, 0, 0.14) 0%, transparent 70%), linear-gradient(180deg, #050508 0%, #0d0d12 100%);
     border-bottom:1px solid rgba(255,255,255,0.08); text-align:center;
   }
   .news-hero-inner { max-width:820px; margin:0 auto; }
@@ -45,7 +71,18 @@
   .article-card-excerpt { font-size:14px; line-height:1.55; color:#A8A8B4; margin:0 0 18px; flex:1; }
   .article-card-footer { display:flex; justify-content:space-between; align-items:center; font-family:var(--tech, monospace); font-size:11px; color:#787884; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px; }
   .article-card-cta { color:#F2B400; font-weight:800; }
+
+  @media(max-width:900px){
+    .header nav {
+      display:none; position:absolute; top:calc(100% + 8px); left:0; right:0;
+      background:rgba(10,10,14,0.98); backdrop-filter:blur(16px);
+      flex-direction:column; padding:16px 20px; gap:12px;
+      border:1px solid rgba(255,255,255,0.12); border-radius:6px;
+    }
+    .header nav.open { display:flex; }
+  }
   @media(max-width:768px){
+    .header { top:8px; width:calc(100% - 16px); height:50px; padding:0 10px; }
     .news-hero { padding:100px 16px 36px; }
     .news-main { padding:30px 16px 60px; }
     .articles-grid { grid-template-columns:1fr; }
@@ -53,26 +90,30 @@
  </style>
 </head>
 <body class="news-page">
- <header class="header" id="header" style="position:fixed; top:0; left:0; right:0; z-index:100;">
+ <header class="header" id="header">
   <div class="header-left">
-   <a class="brand" href="../index.html#home" aria-label="Back to home">
+   <button type="button" class="menu-button" aria-expanded="false" aria-controls="navigation" aria-label="Open menu">
+    <span></span><span></span><span></span>
+   </button>
+   <a class="brand" href="/" aria-label="Wild Animal Survival Sim 3D home">
     <span class="brand-studio">GAMEYARD</span>
     <span class="brand-divider">|</span>
     <span class="brand-title">WILD ANIMAL<small>SIM 3D</small></span>
    </a>
   </div>
   <nav id="navigation" aria-label="Main navigation">
-   <a href="../index.html#modes">THE GAME</a>
-   <a href="../index.html#worlds">WORLDS</a>
-   <a href="../index.html#animals">ROSTER</a>
-   <a href="../news/">NEWS</a>
+   <a href="/#modes">THE GAME</a>
+   <a href="/#worlds">WORLDS</a>
+   <a href="/#animals">ROSTER</a>
+   <a href="/#media">MEDIA</a>
+   <a href="/news/">NEWS</a>
   </nav>
   <div class="header-right">
    <a class="header-play-link" data-play href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer">
     <span>▶</span>
     <span>PLAY NOW</span>
    </a>
-   <a class="header-cta" href="../suggestions.html">
+   <a class="header-cta" href="/suggestions">
     <span>GIVE SUGGESTIONS</span>
    </a>
   </div>
@@ -91,9 +132,9 @@
  <main class="news-main">
   <div class="articles-grid">
    
-     <a class="article-card" href="major-wildlife-rpg-update/">
+     <a class="article-card" href="/news/major-wildlife-rpg-update/">
       <div class="article-card-img-wrap">
-       <img src="../assets/news/major-wildlife-rpg-update.jpg" alt="Wild Animal Survival Sim 3D: Major Wildlife RPG Update Released" width="600" height="338" loading="lazy">
+       <img src="/assets/news/major-wildlife-rpg-update.jpg" alt="Wild Animal Survival Sim 3D: Major Wildlife RPG Update Released" width="600" height="338" loading="lazy">
       </div>
       <div class="article-card-body">
        <div class="article-card-tag">MAJOR UPDATE</div>
@@ -117,5 +158,24 @@
    Official game available on <a href="https://play.google.com/store/apps/details?id=com.Wild.WolfAnimal.survivalSim.game" target="_blank" rel="noopener noreferrer" style="color:#F2B400;">Google Play Store</a>.
   </p>
  </footer>
+
+ <script>
+  const menuBtn = document.querySelector('.menu-button');
+  const nav = document.getElementById('navigation');
+  const header = document.getElementById('header');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', () => {
+      const open = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !open);
+      nav.classList.toggle('open', !open);
+    });
+  }
+  window.addEventListener('scroll', () => {
+    if (header) {
+      if (window.scrollY > 40) header.classList.add('header-scrolled');
+      else header.classList.remove('header-scrolled');
+    }
+  });
+ </script>
 </body>
 </html>

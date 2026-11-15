@@ -129,8 +129,8 @@ const publishedArticles = (game.articles || []).filter(item => new Date(item.pub
 publishedArticles.forEach(news => {
   const a = document.createElement('a');
   a.className = 'news-card';
-  a.href = `news/${news.slug}/`;
-  a.innerHTML = `<div class="news-image"><img src="${news.image}" alt="${news.title} - Wild Animal Survival Sim 3D" loading="lazy" width="1600" height="900"></div><p class="eyebrow">${news.tag}</p><h3>${news.title}</h3><p>${news.text}</p><span class="text-link">READ INTEL ↗</span>`;
+  a.href = `/news/${news.slug}/`;
+  a.innerHTML = `<div class="news-image"><img src="${news.image}" alt="${news.title} - Wild Animal Survival Sim 3D" loading="lazy" width="1024" height="576"></div><p class="eyebrow">${news.tag}</p><h3>${news.title}</h3><p>${news.text}</p><span class="text-link">READ INTEL ↗</span>`;
   $('#news-list').append(a);
 });
 $('.menu-button').addEventListener('click',()=>{const open=$('.menu-button').getAttribute('aria-expanded')==='true';$('.menu-button').setAttribute('aria-expanded',!open);$('.menu-button').setAttribute('aria-label',open?'Open menu':'Close menu');$('#navigation').classList.toggle('open',!open);});
